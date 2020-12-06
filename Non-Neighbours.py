@@ -5,8 +5,9 @@ Created on Wed Apr 10 23:03:53 2019
 
 @author: tanveer
 """
-"""This approach will work with any number of clusters.
-However you will have to cluster the data as a preprocessing step."""
+"""Task:
+    Find farthest points from a given cluster.
+    This approach will work with any number of clusters."""
 
 import random
 import numpy as np
