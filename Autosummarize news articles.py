@@ -3,7 +3,7 @@
 """
 Created on Mon Apr 22 14:37:58 2019
 
-@author: Loonycorn
+@author: Tanveer
 """
 
 from nltk.tokenize import sent_tokenize, word_tokenize
