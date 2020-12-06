@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 class TopicModelling():
-    def __init__(self, text, no_of_topics, machine):
+    def __init__(self, text, no_of_topics):
         """
         Parameters:
         ----------
@@ -17,8 +17,6 @@ class TopicModelling():
                 the text column of signals_df
             no_of_topics: int
                 divide the text in these number of topics
-            machine: string
-                name of the machine
 
         Returns:
         -------
