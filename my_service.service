@@ -1,0 +1,17 @@
+[Unit]
+Description=This is a sample systemd service written for demonstration service.
+After=network.target
+
+[Service]
+User=me
+Group=www-data
+WorkingDirectory=/home/my_folder
+Environment="PATH=/home/my/python/environment"
+ExecStart=/home/my/python/environment/bin/python my_script.py
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
