@@ -16,3 +16,4 @@ if __name__ == '__main__':
     args = my_parser.parse_args()
     print(args._string)
     print(args._float)
+    
