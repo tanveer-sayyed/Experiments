@@ -3,19 +3,22 @@ A decorator is a callable that returns a callable.
 This is similar to packing a gift. The decorator acts as a wrapper.
 """
 
-def make_pretty(func):
-    def inner():
-        print("I got decorated")
-        func()
+def smart_divide(func):
+    def inner(a, b):
+        print("I am going to divide", a, "and", b)
+        if b == 0:
+            print("Whoops! cannot divide")
+            return
+        return func(a, b)
     return inner
 
-def ordinary_1():
-    print("I am ordinary 1")
+def divide_1(a, b):
+    print(a/b)
     
-@make_pretty
-def ordinary_2():
-    print("I am ordinary 2")
+@smart_divide
+def divide_2(a, b):
+    print(a/b)
     
-if __name__ == '__main__':
-    make_pretty(ordinary_1)()
-    ordinary_2()
+if __name__ == "__main__":
+    smart_divide(divide_1)(5, 0)
+    divide_2(5, 0)
