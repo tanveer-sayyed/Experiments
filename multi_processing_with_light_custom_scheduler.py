@@ -13,7 +13,7 @@ def f():
     print(g)
     
 processes = []
-PERIOD = 5 # in seconds
+PERIOD = 10 # in seconds
 while True:
     try:
         s = time() + PERIOD
@@ -31,7 +31,7 @@ while True:
         [p.terminate for p in processes]
 
 
-## event call
+## event scheduler
 while True:
     hr = int(datetime.now(timezone('Asia/Kolkata')).time().hour)
     minute = int(datetime.now(timezone('Asia/Kolkata')).time().minute)
