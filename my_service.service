@@ -1,5 +1,5 @@
 [Unit]
-Description=This is a sample systemd service written for demonstration service.
+Description=This is a sample systemd service written for demonstration purpose.
 After=network.target
 
 [Service]
