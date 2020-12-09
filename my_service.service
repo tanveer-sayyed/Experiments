@@ -18,4 +18,4 @@ WantedBy=multi-user.target
 # sudo systemctl status my_service.service
 # sudo systemctl enable my_service.service
 # sudo systemctl stop   my_service.service
-# journalctl status my_service -> logs
+# journalctl -u my_service -> logs
