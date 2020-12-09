@@ -1,3 +1,9 @@
+"""
+https://janakiev.com/blog/keras-iris/
+https://janakiev.com/blog/pytorch-iris/
+"""
+
+
 import keras
 """
     CNN
