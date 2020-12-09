@@ -26,3 +26,4 @@ test_error, test_accuracy = model.evaluate(X_test, y_test, verbose=1)
 """
     LSTM
 """
+input_shape = (batch_size, time_steps, units)

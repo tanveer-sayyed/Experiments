@@ -5,7 +5,7 @@ from multiprocessing import Process
 
 from my_logger import log_this_error
 
-# light scheduler
+# job scheduler
 def f():
     g = 0
     for i in range(100000000):
@@ -13,7 +13,7 @@ def f():
     print(g)
     
 processes = []
-PERIOD = 10 # in seconds
+PERIOD = 5 # in seconds
 while True:
     try:
         s = time() + PERIOD
