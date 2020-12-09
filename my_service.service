@@ -13,5 +13,9 @@ ExecStart=/home/my/python/environment/bin/python my_script.py
 WantedBy=multi-user.target
 
 
-
-
+#### COMMANDS :
+# sudo systemctl start  my_service.service
+# sudo systemctl status my_service.service
+# sudo systemctl enable my_service.service
+# sudo systemctl stop   my_service.service
+# journalctl status my_service -> logs
