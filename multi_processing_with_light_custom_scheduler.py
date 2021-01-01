@@ -32,18 +32,38 @@ while True:
 
 
 ## event scheduler
-while True:
-    hr = int(datetime.now(timezone('Asia/Kolkata')).time().hour)
-    minute = int(datetime.now(timezone('Asia/Kolkata')).time().minute)
-    if (hr == 10) & (minute == 15):
-        for tries in range(10):
-            print("====== TRY ====== :", tries+1)
-            try:
-                f()
-                sleep(60)
-                break
-            except Exception as exc:
-                log_this_error(exc)
-                continue
-    else:
-        sleep(50)
+def schedule(function, tz, hour, minute):
+    """
+
+    Parameters
+    ----------
+    function : callable function
+        name of the function which needs to be scheduled
+    tz : str
+        timezone
+    hour : int
+        hour of the time to be scheduled
+    minute : int
+        minute of the time to be scheduled
+
+    Returns
+    -------
+    None.
+
+    """
+    while True:
+        hr = int(datetime.now(timezone(tz)).time().hour)
+        minute = int(datetime.now(timezone(tz)).time().minute)
+        if (hr == hour) & (minute == minute):
+            for tries in range(10):
+                print("====== TRY ====== :", tries+1)
+                try:
+                    function()
+                    sleep(60)
+                    break
+                except Exception as exc:
+                    log_this_error(exc)
+                    continue
+        else:
+            print(hr, minute)
+            sleep(50)
