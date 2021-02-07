@@ -13,12 +13,12 @@ def smart_divide(func):
 
 def divide_1(a, b):
     print(a/b)
-    
+
 @smart_divide
 def divide_2(a, b):
     print(a/b)
-    
+
 if __name__ == "__main__":
     smart_divide(divide_1)(5, 0)
     divide_2(5, 0)
-    divide_2(6,3)
+    divide_2(6, 3)
