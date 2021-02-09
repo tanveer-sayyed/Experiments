@@ -34,7 +34,6 @@ while True:
 ## event scheduler
 def schedule(function, tz, hour, minute):
     """
-
     Parameters
     ----------
     function : callable function
@@ -45,16 +44,15 @@ def schedule(function, tz, hour, minute):
         hour of the time to be scheduled
     minute : int
         minute of the time to be scheduled
-
     Returns
     -------
     None.
-
     """
     while True:
         hr = int(datetime.now(timezone(tz)).time().hour)
-        minute = int(datetime.now(timezone(tz)).time().minute)
-        if (hr == hour) & (minute == minute):
+        minu = int(datetime.now(timezone(tz)).time().minute)
+        print(hr, minute)
+        if (hr == hour) & (minu == minute):
             for tries in range(10):
                 print("====== TRY ====== :", tries+1)
                 try:
@@ -65,5 +63,4 @@ def schedule(function, tz, hour, minute):
                     log_this_error(exc)
                     continue
         else:
-            print(hr, minute)
             sleep(50)
