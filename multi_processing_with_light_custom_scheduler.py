@@ -49,10 +49,10 @@ def schedule(function, tz, hour, minute):
     None.
     """
     while True:
-        hr = int(datetime.now(timezone(tz)).time().hour)
-        minu = int(datetime.now(timezone(tz)).time().minute)
-        print(hr, minute)
-        if (hr == hour) & (minu == minute):
+        hour_ = int(datetime.now(timezone(tz)).time().hour)
+        minute_ = int(datetime.now(timezone(tz)).time().minute)
+        print(f"{hour_}:{minute_}")
+        if (hour_ == hour) & (minute_ == minute):
             for tries in range(10):
                 print("====== TRY ====== :", tries+1)
                 try:
