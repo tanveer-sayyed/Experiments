@@ -64,3 +64,18 @@ def schedule(function, tz, hour, minute):
                     continue
         else:
             sleep(50)
+
+if __name__ == "__main__":
+    from python_script_1 import function_1
+    from python_script_2 import function_2
+    
+    try:
+        p = Process(target=schedule, args=(function_1, 'Asia/Kuala_Lumpur', 1, 59))
+        q = Process(target=schedule, args=(function_2, 'Asia/Kolkata', 21, 0))
+        processes = [p, q]
+        for process in [p,q]:
+            process.daemon = True; process.start()
+    except Exception as e:
+        log_this_error(e)
+        [process.terminate for process in processes]
+        print("ERROR")
