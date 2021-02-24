@@ -44,7 +44,7 @@ def scheduler(tz, hour, minute):
 
 @scheduler('Asia/Kolkata', 13, 45)
 def call_me_at(): 
-    print("Hi, You called me at a scheduled time !")
+    print("Hi, You called me at a scheduled time!")
 
 def smart_divide(func):
     def inner(a, b):
@@ -67,3 +67,4 @@ if __name__ == "__main__":
     divide_2(5, 0)
     divide_2(6, 3)
     call_me_at()
+    divide_1(5,0)
