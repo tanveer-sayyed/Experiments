@@ -10,4 +10,3 @@ def log_this_error(e):
     global logger
     logger.exception(str(e))
     print("An error occured. Check file 'log.txt'")
-    exit()

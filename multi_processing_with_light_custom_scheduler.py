@@ -11,11 +11,11 @@ def big_function():
         g += 1
     print(g)
 
-def recurring_scheduler(f, period_in_seconds = period):
+def recurring_scheduler(f, period_in_seconds = 3600):
     processes = []
     while True:
         try:
-            s = time() + period
+            s = time() + period_in_seconds
             for x in processes:
                 if not x.is_alive():
                     x.join()
@@ -28,6 +28,7 @@ def recurring_scheduler(f, period_in_seconds = period):
         except Exception as exc:
             log_this_error(exc)
             [p.terminate for p in processes]
+            processes = []
             pass
 
 if __name__ == "__main__":
