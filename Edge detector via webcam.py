@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 26 15:48:02 2020
-
-@author: Rajeev D. Ratan
-"""
 import cv2
 
 def sketch(img):
