@@ -9,7 +9,7 @@ Above it can be seen that the day's prediction is normalised to account for shor
 This adjusted value is thus more robust. Even medium-term variations would be considered, which is still a work in progress.
 
 The following graph shows the testing result of model. As you can see the direction as well as predictions are near to the true-value in more than 90% of the cases.
-Also the distance between the green and the red dot is the profit buffer; the more the distance the more the scope for profit(contingent upon the direction).
+Also the distance between the green and the red dot is the profit maximiser or loss miniser buffer; the more the distance the more the scope for saving wealth(contingent upon the direction).
 
 ![2021-07-26 12:57:23 712827_Close_ FUTURE](https://user-images.githubusercontent.com/45352897/127092812-1c26f1a7-3aa4-484c-a3b6-7c41d69fc2f6.png)
 
