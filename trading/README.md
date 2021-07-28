@@ -3,15 +3,22 @@ In Stock market, its machines talking to machines and competing with machines. A
 
 The best tradable intra-day value, i.e. which should yield the "minimum" return, is the output of the algorithm.
 
-![image](https://user-images.githubusercontent.com/45352897/127092736-73bf7eae-2927-45a4-a726-04074b5ee443.png)
+Image-1
+![image](https://user-images.githubusercontent.com/45352897/127315166-6a8bf69c-4c0b-4c8c-8917-34b8a8143fc8.png)
+
 
 Above it can be seen that the day's prediction is normalised to account for short-term variations. The adjustment is decided by the algorithm and not humans.
 This adjusted value is thus more robust. Even medium-term variations would be considered, which is still a work in progress.
 
 The below graph shows the testing result of model. As you can see the direction is correct in more than 90% of the cases!
-Also the distance between the green and the red dot is the profit maximiser/loss minimiser buffer; the more the distance the more the scope for wealth preservation(contingent upon the direction).
 
-![2021-07-26 12:57:23 712827_Close_ FUTURE](https://user-images.githubusercontent.com/45352897/127092812-1c26f1a7-3aa4-484c-a3b6-7c41d69fc2f6.png)
+Image-2
+![image](https://user-images.githubusercontent.com/45352897/127315268-eac0b1ed-d7ca-495d-96fa-3b76fa6e57a6.png)
+
+Now Image-1 shows that the market is expected to fall. So a put option would be strategy of many. But what about taking an opposite position? What if we purchase a
+call instead?! Let's see how our best target(34516.24) fares on the charts: (see the blue line)
+
+![image](https://user-images.githubusercontent.com/45352897/127315895-f4f2c89f-e1ca-4472-9d54-378d57318187.png)
 
 Upon prediction the next step is to "maximise" the return by activating a momentum strategy, after a particular threshold is reached. This threshold is decided by the algorithm.
 
