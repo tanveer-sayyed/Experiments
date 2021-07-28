@@ -18,6 +18,7 @@ Image-2
 Now Image-1 shows that the market is expected to fall. So a put option would be strategy of many. But what about taking an opposite position? What if we purchase a
 call instead?! Let's see how our best target(34516.24) fares on the charts: (see the blue line)
 
+Image-3
 ![image](https://user-images.githubusercontent.com/45352897/127315895-f4f2c89f-e1ca-4472-9d54-378d57318187.png)
 
 Upon prediction the next step is to "maximise" the return by activating a momentum strategy, after a particular threshold is reached. This threshold is decided by the algorithm.
