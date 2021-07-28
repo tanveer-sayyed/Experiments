@@ -1,5 +1,5 @@
  
-In Stock market, its machines talking to machines and competing with machines. And machines are not humans! They "think" diffirently; its certain that only a machine can defeat a machine, and not a human. Hence it is important that the algorithms that we create have zero human intervention, ideally. Following is an attempt to build the same, for intra-day frequency.
+In Stock market, its machines talking to machines and competing with machines. And machines are not humans! They "think" diffirently; its certain that only a machine can defeat a machine, and not a human. Hence it is important that the algorithms that we create have zero human intervention, ideally. Following is an attempt to build the same, for intra-day frequency. The attempt here is to be able to take an opposite position, i.e. if a market is falling, strike on a call; if the market is rising strike on a put.
 
 The best tradable intra-day value, i.e. which should yield the "minimum" return, is the output of the algorithm.
 
@@ -22,8 +22,6 @@ call instead?! Let's see how our best target(34516.24) fares on the charts: (see
 
 Image-3
 ![image](https://user-images.githubusercontent.com/45352897/127315895-f4f2c89f-e1ca-4472-9d54-378d57318187.png)
-
-Upon prediction the next step is to "maximise" the return by activating a momentum strategy, after a particular threshold is reached. This threshold is decided by the algorithm.
 
 Furture work:
 Based on the slope, the algorithm decides to buy only calls or only puts or both calls and puts (along with their thresholds, calculated by the model).
