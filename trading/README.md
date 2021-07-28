@@ -13,7 +13,7 @@ Also the distance between the green and the red dot is the profit maximiser/loss
 
 ![2021-07-26 12:57:23 712827_Close_ FUTURE](https://user-images.githubusercontent.com/45352897/127092812-1c26f1a7-3aa4-484c-a3b6-7c41d69fc2f6.png)
 
-Upon prediction the next step is to maximise the return by activating a momentum strategy, after a particular threshold. This threshold is decided by the model.
+Upon prediction the next step is to "maximise" the return by activating a momentum strategy, after a particular threshold is reached. This threshold is decided by the algorithm.
 
 Furture work:
-Based on the slope the algorithm decides to buy only calls or only puts or both calls and puts (along with their thresholds, calculated by the model).
+Based on the slope, the algorithm decides to buy only calls or only puts or both calls and puts (along with their thresholds, calculated by the model).
