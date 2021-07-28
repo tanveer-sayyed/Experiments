@@ -11,7 +11,8 @@ Image-1
 Above it can be seen that the day's prediction is normalised to account for short-term variations. The adjustment is decided by the algorithm and not humans.
 This adjusted value is thus more robust. Even medium-term variations would be considered, which is still a work in progress.
 
-The below graph shows the testing result of model. As you can see the direction is correct in more than 90% of the cases!
+The below graph shows the testing result of model, as well as the prediction of the best value for the day.
+As you can see the direction is correct in more than 90% of the cases!
 
 Image-2
 ![image](https://user-images.githubusercontent.com/45352897/127315268-eac0b1ed-d7ca-495d-96fa-3b76fa6e57a6.png)
