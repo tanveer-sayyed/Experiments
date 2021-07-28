@@ -4,6 +4,7 @@ In Stock market, its machines talking to machines and competing with machines. A
 The best tradable intra-day value, i.e. which should yield the "minimum" return, is the output of the algorithm.
 
 Image-1
+
 ![image](https://user-images.githubusercontent.com/45352897/127315166-6a8bf69c-4c0b-4c8c-8917-34b8a8143fc8.png)
 
 
