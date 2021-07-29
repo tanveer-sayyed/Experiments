@@ -17,7 +17,7 @@ Image-2
 ![image](https://user-images.githubusercontent.com/45352897/127315268-eac0b1ed-d7ca-495d-96fa-3b76fa6e57a6.png)
 
 Now Image-1 shows that the market is expected to fall. So a put option would be strategy of many. But what about taking an opposite position? What if we purchase a
-call instead?! Let's see how our best target(34516.24) fares on the charts: (see the blue line)
+call instead?! Let's see how our best target(34516.24) fares on the charts: (see the solid blue line)
 
 Image-3
 ![image](https://user-images.githubusercontent.com/45352897/127315895-f4f2c89f-e1ca-4472-9d54-378d57318187.png)
