@@ -32,7 +32,7 @@ date | prediction | close | ground_truth
 |2021-09-02	| LOWER	 |  36831.3	  |HIGHER
 
 
-As can be seen in the above image out of the total business days in the month of August-2021 (which includes a holiday), the model was able to predict correctly the direction for 13 days.
+As can be seen in the above table out of the total business days in the month of August-2021 (which includes a holiday), the model was able to predict correctly the direction for 13 days.
 
 Aug, 2021 :: 61.9047% [13/21]
 
