@@ -33,7 +33,9 @@ date | prediction | close | ground_truth
 
 
 As can be seen in the above table out of the total business days in the month of August-2021 (which includes a holiday), the model was able to predict correctly the direction for 13 days.
+
 Aug, 2021 : 61.9047% [13/21]
+
 Sep, 2021 : 50.0000% [1/2]
 
 ## The Accuracy
