@@ -1,5 +1,5 @@
 ## The Background
-In Stock market, its machines talking to machines and competing with machines. And machines are not humans! They "think" diffirently; its certain that only a machine can defeat a machine, and not a human. Hence it is important that the algorithms that we create have zero human intervention, ideally. Following is an attempt to build the same, for intra-day frequency. The attempt here is to be able to take an opposite position, i.e. if a market is falling, strike on a call; if the market is rising strike on a put.
+In Stock market, its machines talking to machines and competing with machines. And machines are not humans! They "think" diffirently; its certain that only a machine can defeat a machine, and not a human. Hence it is important that the algorithms that we create have zero human intervention, ideally. Following is an attempt to build the same, for intra-day frequency. The attempt here is also to be able to take an opposite position, i.e. if a market is falling, strike on a call; if the market is rising strike on a put.
 
 ## The Experiemnt
 The following experiment is an attempt to predict if the direction of the next day for NIFTY Bank index. Backtesting begins from 1st Aug, 2021.
@@ -35,9 +35,11 @@ date | prediction | close | ground_truth
 As can be seen in the above image out of the total business days in the month of August-2021 (which includes a holiday), the model was able to predict correctly the direction for 13 days.
 
 Aug, 2021 :: 61.9047% [13/21]
+
 Sep, 2021 :: 50.0000% [1/2]
 
+## The Accuracy
 The overall current accuracy of the model is thus: 14/23 = 60.8695%
 
-## Future
+## And ... The Future
 Predict also the best price at which one can hold positions for intra-day trade. The work is still in progress.
