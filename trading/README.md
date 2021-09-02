@@ -4,9 +4,12 @@ In Stock market, its machines talking to machines and competing with machines. A
 ## The Experiemnt
 The following experiment is an attempt to predict if the direction of the next day for NIFTY Bank index. Backtesting begins from 1st Aug, 2021.
 
-	date	    prediction	close	   ground_truth
-2021-07-30		         34584.35	
-2021-08-02	 HIGHER	   34710.0	  HIGHER
+date | prediction | close | ground_truth
+| :---: | :---: | :---: | :---: | 
+| 2021-07-30 |  | | 34584.35 | 
+ | 2021-08-02 |  HIGHER |    34710.0 |   HIGHER
+ 
+ 
 2021-08-03	 HIGHER	   35207.45	  HIGHER
 2021-08-04	 LOWER	   36028.05	  HIGHER
 2021-08-05	 LOWER	   35834.75	  LOWER
