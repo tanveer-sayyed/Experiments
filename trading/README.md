@@ -40,7 +40,7 @@ Aug, 2021 : 61.9% [13/21]
 Sep, 2021 : 66.6% [2/3]
 
 ## The Accuracy
-The overall current accuracy of the model is thus: 15/24 = 60.6%
+The overall current accuracy of the model is thus: 15/24 = 62.5%
 
 ## And ... The Future
 Predict also the best price at which one can hold positions for intra-day trade. The work is still in progress.
