@@ -30,16 +30,17 @@ date | prediction | close | ground_truth
 |2021-08-31	| HIGHER	|   36424.6	 | HIGHER
 |2021-09-01	| HIGHER	|   36574.3	 | HIGHER
 |2021-09-02	| LOWER	 |  36831.3	  |HIGHER
+|2021-09-02	| LOWER	 |  36763.3	  |LOWER
 
 
 As can be seen in the above table out of the total business days in the month of August-2021 (which includes a holiday), the model was able to predict correctly the direction for 13 days.
 
-Aug, 2021 : 61.9047% [13/21]
+Aug, 2021 : 61.9% [13/21]
 
-Sep, 2021 : 50.0000% [1/2]
+Sep, 2021 : 66.6% [2/3]
 
 ## The Accuracy
-The overall current accuracy of the model is thus: 14/23 = 60.8695%
+The overall current accuracy of the model is thus: 15/24 = 60.6%
 
 ## And ... The Future
 Predict also the best price at which one can hold positions for intra-day trade. The work is still in progress.
