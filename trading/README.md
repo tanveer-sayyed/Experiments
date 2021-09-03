@@ -6,7 +6,7 @@ The following experiment is an attempt to predict if the direction of the next d
 
 date | prediction | close | ground_truth
 | :---: | :---: | :---: | :---: | 
-| 2021-07-30 |  |  34584.35 | 
+| 2021-07-30 |  |  34584.3 | 
  | 2021-08-02 |  HIGHER |    34710.0 |   HIGHER
  |2021-08-03	| HIGHER	  | 35207.4	|  HIGHER
 |2021-08-04	| LOWER	 |  36028.0	|  HIGHER
