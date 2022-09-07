@@ -56,11 +56,41 @@ savefig.pad_inches:   0.2       # padding when bbox is set to tight
 legend.framealpha: 1
 
 """
-plt.style.use('myCustomMatplotlibStylesheet.mplstyle')
+Source: https://www.datafantic.com/the-magic-of-matplotlib-stylesheets/
 fig, ax = plt.subplots()
 usa = df[df['Country Code'] == 'USA']
 china = df[df['Country Code'] == 'CHN']
-ax.plot(usa['Year'], usa['Value'] / 1_000_000_000_000)
-ax.plot(china['Year'], china['Value'] / 1_000_000_000_000)
-ax.set_title("USA and China GDP: 1960-2020");
+uk = df[df['Country Code'] == 'GBR']
+russia = df[df['Country Code'] == 'RUS']
+ax.plot(usa['Year'], usa['Value'] / 1_000_000_000_000, label='USA')
+ax.plot(china['Year'], china['Value'] / 1_000_000_000_000, label='China')
+ax.plot(uk['Year'], uk['Value'] / 1_000_000_000_000, label='UK')
+ax.plot(russia['Year'], russia['Value'] / 1_000_000_000_000, label='Russia')
+ax.set_title("Rising Above the Pack")
+ax.set_ylim(0)
+# Add in title and subtitle
+ax.text(x=.08, y=.86, 
+        s="GDP from 1960-2020, in Trillions of USD", 
+        transform=fig.transFigure, 
+        ha='left', 
+        fontsize=20, 
+        alpha=.8)
+# Set source text
+ax.text(x=.08, y=0, 
+        s="""Source: "GDP of all countries(1960-2020)" via Kaggle.com""", 
+        transform=fig.transFigure, 
+        ha='left', 
+        fontsize=14, 
+        alpha=.7)
+# Label the lines directly
+ax.text(x=.8, y=.75, s="""USA""", 
+        transform=fig.transFigure, ha='left', fontsize=20, alpha=.7)
+ax.text(x=.82, y=.5, s="""China""", 
+        transform=fig.transFigure, ha='left', fontsize=20, alpha=.7)
+ax.text(x=.83, y=.2, s="""UK""", 
+        transform=fig.transFigure, ha='left', fontsize=20, alpha=.7)
+ax.text(x=.83, y=.11, s="""Russia""", 
+        transform=fig.transFigure, ha='left', fontsize=20, alpha=.7)
+# Export plot as high resolution PNG
+plt.savefig('rising_above.png')
 """
