@@ -1,15 +1,19 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Blueprint
+add_api = Blueprint('predict_api', __name__)
+substract_api =  Blueprint('worker_api', __name__)
 
-app = Flask(__name__)
-
-@app.route("/add", methods=["GET"])
+@add_api.route("/add", methods=["GET"])
 def add():
     request_data = request.get_json()
     return jsonify({"plus" : request_data["a"] + request_data["b"]})
 
-@app.route("/substract/<int:a>/<int:b>", methods=["GET"])
+@substract_api.route("/substract/<int:a>/<int:b>", methods=["GET"])
 def substract(a, b):
     return jsonify({"minus" : a - b})
+
+app = Flask(__name__)
+app.register_blueprint(add_api)
+app.register_blueprint(substract_api)
 
 ###################################################################
 #                 Client calling the API
