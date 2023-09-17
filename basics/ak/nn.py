@@ -1,19 +1,35 @@
 from random import uniform
 
-class neuron:
+class Neuron:
 
-    def __init__(self):
+    def __init__(self, nn_in):
         self.bias = 0.0
-        self.weight = uniform(-1,1)
+        self.weight = [uniform(-1,1) for _ in range(nn_in)]
 
     def __call__(self, x):
-        return x*self.weight + self.bias
+        return sum(
+            [xi*wi for (xi, wi) in zip(x, self.weight)],
+            default = self.bias
+            ).tanh()
 
-class layer:
+    def __repr__(self):
+        return f"neuron[{len(self.weight)}]"
 
-    def __init__(self, num_layers, size_tuple):
-        self.layers = [[neuron()]*i for i in size_tuple]
+    def parameters(self):
+        return self.weight + [self.bias]
+
+class Layer:
+
+    def __init__(self, nn_in, nn_out):
+        self.layer = [Neuron(nn_in) for i in range(nn_out)]
 
     def __call__(self, x):
-        return x*self.weight + self.bias
+        return [Neuron(x) for i in self.in_layer]
 
+    def parameters(self):
+        return self.weight + [self.bias]
+
+    def __repr__(self):
+        return str([n for n in self.layer])
+
+l = Layer(3,4)
