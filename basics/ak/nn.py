@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from random import uniform
-from torch import tensor
 from typing import List
 
 
@@ -14,10 +13,14 @@ class Neuron:
         self.weight = [uniform(-1,1) for _ in range(self.nn_in)]
 
     def __call__(self, x:float) -> float:
+        print(self.weight)
+        print(x)
+        for (wi, xi) in zip(self.weight, x):
+            print(wi, xi)
         return sum(
             [xi*wi for (xi, wi) in zip(x, self.weight)],
             self.bias
-            ).tanh()
+            )
 
     @property
     def parameters(self) -> List[float]:
@@ -74,19 +77,16 @@ mlp.layers[0].neurons[1].parameters
 mlp.layers[0].neurons[2].parameters
 mlp.layers[0].parameters
 mlp.parameters
+xs = [[1,2,3],[4,5,6]]
+[mlp(x) for x in xs]
 
-x = tensor([2.0, 3.0, -1.0])
-n = MLP(len(x), (4, 4, 1))
-n(x)
-
-
-
-xs = tensor([
+xs = [
   [2.0, 3.0, -1.0],
   [3.0, -1.0, 0.5],
   [0.5, 1.0, 1.0],
   [1.0, 1.0, -1.0],
-])
+]
+mlp(xs)
 ys = [1.0, -1.0, -1.0, 1.0] # desired targets
 
 for k in range(20):
