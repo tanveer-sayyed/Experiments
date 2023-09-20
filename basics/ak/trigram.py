@@ -24,7 +24,6 @@ words = [START + word + END for word in words]
 unique =  sorted(set("".join(words)))
 int2char = {i:c for i,c in enumerate(unique)}
 char2int = {c:i for i,c in enumerate(unique)}
-
 for word in words:
     for trigram in zip(word, word[1:], word[2:]):
         counter[trigram] = counter.get(trigram, 0) + 1
@@ -58,10 +57,11 @@ for ch3 in unique:
         for ch1 in unique:
             prob["ch3|ch1,ch2"][f"{ch3}|{ch1},{ch2}"] = \
                 matrix[char2int[ch1], char2int[ch2], char2int[ch3]].item()
+all_keys = list(prob["ch3|ch1,ch2"].keys())
 for ch1 in unique:
     for ch2 in unique:
         values = []
-        keys = [s for s in list(prob["ch3|ch1,ch2"].keys()) if s.endswith(f"{ch1},{ch2}")]
+        keys = [s for s in all_keys if s.endswith(f"{ch1},{ch2}")]
         for key in keys: values.append(prob["ch3|ch1,ch2"][key])
         final_prob["ch3|ch1,ch2"][f"*|{ch1},{ch2}"] = tensor(values)
         if sum(values) != 0.0:
@@ -72,10 +72,10 @@ for _ in range(5):
     out = []
     counter = 0
     while True:
-        if counter == 0: # block for 1st letter
-            idx = char2int[START] # always begin with the start token
+        if counter == 0:               # block for 1st letter
+            idx = char2int[START]      # always begin with the start token
             out.append(int2char[idx])
-        elif counter == 1: # block for 2nd letter
+        elif counter == 1:             # block for 2nd letter
             idx = multinomial(
                 input=final_prob["ch2|ch1"][f"*|{out[-1]}"],
                 generator=G,
@@ -83,8 +83,8 @@ for _ in range(5):
                 replacement=True,
             ).item()
             out.append(int2char[idx])
-        else: # after the first two letters, keep using this block ...
-            idx = multinomial(
+        else:                          # after the first two letters,
+            idx = multinomial(         # keep using this block ...
                 input=final_prob["ch3|ch1,ch2"][f"*|{out[-2]},{out[-1]}"],
                 generator=G,
                 num_samples=1,
