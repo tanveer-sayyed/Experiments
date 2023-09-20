@@ -10,12 +10,12 @@ END = "~" # end token
 START = "_" # start token
 G = Generator().manual_seed(2)
 
-counter = {}
 prob = {
     "ch1" : {},
     "ch2|ch1" : {},
     "ch3|ch1,ch2":{}
     }
+counter = {}
 final_prob = prob.copy()
 
 words = loads(open("names.txt","r").read())
@@ -72,10 +72,10 @@ for _ in range(5):
     out = []
     counter = 0
     while True:
-        if counter == 0:               # block for 1st letter
+        if counter == 0:               # code-block for 1st letter
             idx = char2int[START]      # always begin with the start token
             out.append(int2char[idx])
-        elif counter == 1:             # block for 2nd letter
+        elif counter == 1:             # code-block for 2nd letter
             idx = multinomial(
                 input=final_prob["ch2|ch1"][f"*|{out[-1]}"],
                 generator=G,
@@ -84,7 +84,7 @@ for _ in range(5):
             ).item()
             out.append(int2char[idx])
         else:                          # after the first two letters,
-            idx = multinomial(         # keep using this block ...
+            idx = multinomial(         # keep using this code-block ...
                 input=final_prob["ch3|ch1,ch2"][f"*|{out[-2]},{out[-1]}"],
                 generator=G,
                 num_samples=1,
