@@ -66,7 +66,7 @@ for _ in range(5):
         if counter == 0:
             idx = char2int[START]      # always begin with the start token
             out.append(int2char[idx])
-        elif counter == 1:             # 2nd letter
+        elif counter == 1:             # 2nd letter takes probability distribution from the first
             idx = multinomial(
                 input=prob["ch2|ch1"][f"*|{out[-1]}"],
                 generator=G,
@@ -75,7 +75,7 @@ for _ in range(5):
             ).item()
             out.append(int2char[idx])
         else:                          # for subsequent letters,
-            idx = multinomial(         # keep using this code-block ...
+            idx = multinomial(         # use probability distribution  ...
                 input=prob["ch3|ch1,ch2"][f"*|{out[-2]},{out[-1]}"],
                 generator=G,
                 num_samples=1,
