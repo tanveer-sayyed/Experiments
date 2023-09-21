@@ -64,7 +64,7 @@ for _ in range(5):
     out = []
     counter = 0
     while True:
-        if counter == 0:               # 1st letter
+        if counter == 0:
             idx = char2int[START]      # always begin with the start token
             out.append(int2char[idx])
         elif counter == 1:             # 2nd letter
