@@ -30,21 +30,21 @@ for ch1, ch2, ch3 in counter.keys():
             counter[(ch1, ch2, ch3)]
 
 ## prob(ch1) :: O(n)
-for ch1 in unique: prob["ch1"][ch1] = matrix[char2int[ch1],:,:].sum().item()
+for ch1 in unique: prob["ch1"][ch1] = matrix[char2int[ch1],:,:].sum().item() # count
 prob["ch1"] = dict(sorted(prob["ch1"].items()))
 temp = sum(prob["ch1"].values())
-for key in prob["ch1"].keys(): prob["ch1"][key] /= temp
+for key in prob["ch1"].keys(): prob["ch1"][key] /= temp # normalise
 prob["ch1"] = tensor(list(prob["ch1"].values()))
 
 # prob(ch2|ch1) :: O(n**2)
 for ch1 in unique:
     values = []
     for ch2 in unique: values.append(
-            matrix[char2int[ch1], char2int[ch2], :].sum().item()
+            matrix[char2int[ch1], char2int[ch2], :].sum().item() # count
             )
     prob["ch2|ch1"][f"*|{ch1}"] = tensor(values)
     if sum(values) != 0.0: 
-        prob["ch2|ch1"][f"*|{ch1}"] /= tensor(values).sum()
+        prob["ch2|ch1"][f"*|{ch1}"] /= tensor(values).sum() # normalise
 
 # prob(ch3|ch1,ch2) :: O(n**3)
 for ch1 in unique:
@@ -52,11 +52,11 @@ for ch1 in unique:
         values = []
         for ch3 in unique:
             values.append(
-                    matrix[char2int[ch1], char2int[ch2], char2int[ch3]].item()
+                    matrix[char2int[ch1], char2int[ch2], char2int[ch3]].item() # count
                     )
         prob["ch3|ch1,ch2"][f"*|{ch1},{ch2}"] = tensor(values)
         if sum(values) != 0.0:
-            prob["ch3|ch1,ch2"][f"*|{ch1},{ch2}"] /= tensor(values).sum()
+            prob["ch3|ch1,ch2"][f"*|{ch1},{ch2}"] /= tensor(values).sum() # normalise
 
 # prediction
 for _ in range(5):
