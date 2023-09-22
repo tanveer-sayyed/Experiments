@@ -9,7 +9,7 @@ END = "~" # end token
 START = "_" # start token
 G = Generator().manual_seed(2)
 
-prob = {
+prob = { # used for saving probability distributions
     "ch1" : {},
     "ch2|ch1" : {},
     "ch3|ch1,ch2":{},
