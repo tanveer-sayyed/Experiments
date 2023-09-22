@@ -7,7 +7,7 @@ from torch import float32, Generator, multinomial, tensor, zeros
 
 END = "~" # end token
 START = "_" # start token
-G = Generator().manual_seed(2)
+G = Generator().manual_seed(103)
 
 prob = { # used for saving probability distributions
     "ch1" : {},
@@ -46,7 +46,7 @@ for ch1 in unique:
     if sum(values) != 0.0: 
         prob["ch2|ch1"][f"*|{ch1}"] /= tensor(values).sum() # normalise
 
-# prob(ch3|ch1,ch2) :: O(n**3)
+# prob(ch3|ch1,ch2) :: O(n**3) <-- the curse of dimenstionality begins
 for ch1 in unique:
     for ch2 in unique:
         values = []
@@ -86,10 +86,10 @@ for _ in range(5):
         counter += 1
     print("".join(out))
     """
-        Output: 
-            _tavi~
-            _kallee~
-            _lour~
-            _cohnn~
-            _magrah~
+        raw output: 
+            _yoh~
+            _kiya~
+            _johieane~
+            _jiahara~
+            _ivikam~
     """
