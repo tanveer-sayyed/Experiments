@@ -66,16 +66,16 @@ for _ in range(5):
         if counter == 0:
             idx = char2int[START]      # always begin with the start token
             out.append(int2char[idx])
-        elif counter == 1:             # 2nd letter is feeded probability distribution from the first
-            idx = multinomial(
+        elif counter == 1:             # 2nd letter is sampled by feeding in the 
+            idx = multinomial(         # probability distribution from the first letter
                 input=prob["ch2|ch1"][f"*|{out[-1]}"],
                 generator=G,
                 num_samples=1,
                 replacement=True,
             ).item()
             out.append(int2char[idx])
-        else:                          # for subsequent letters,
-            idx = multinomial(         # use previous probability distributions  ...
+        else:                          # subsequent letters are sampled by feeding
+            idx = multinomial(         # in previous probability distributions  ...
                 input=prob["ch3|ch1,ch2"][f"*|{out[-2]},{out[-1]}"],
                 generator=G,
                 num_samples=1,
