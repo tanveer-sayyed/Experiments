@@ -14,7 +14,7 @@ from typing import List
 
 @dataclass
 class Neuron:
-    nn_in: int
+    nn_in:int
     weight:List[float] = field(default_factory=list)
     bias:float = 0.0
 
