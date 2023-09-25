@@ -3,8 +3,9 @@
     
 a neural network from scratch, with just the forward pass
 for backward pass see:
-    chainRule1.ipynb
-    chainRule2.ipynb
+    chainRule1.ipynb,
+    chainRule2.ipynb and
+    gradientDescent.ipynb
 """
 
 from dataclasses import dataclass, field
@@ -70,6 +71,5 @@ class MLP:
     @property
     def parameters(self):
         return [p for layer in self.layers for p in layer.parameters]
-
 
 mlp = MLP(3, (4,2,1))
