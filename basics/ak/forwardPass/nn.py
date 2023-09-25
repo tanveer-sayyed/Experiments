@@ -2,10 +2,7 @@
     [reference]: https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/micrograd/micrograd_lecture_second_half_roughly.ipynb
     
 a neural network from scratch, with just the forward pass
-for backward pass see:
-    chainRule1.ipynb,
-    chainRule2.ipynb and
-    gradientDescent.ipynb
+
 """
 
 from dataclasses import dataclass, field
