@@ -70,3 +70,4 @@ class MLP:
         return [p for layer in self.layers for p in layer.parameters]
 
 mlp = MLP(3, (4,2,1))
+
