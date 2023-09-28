@@ -46,7 +46,7 @@ for ch1 in unique:
     if sum(values) != 0.0: 
         prob["ch2|ch1"][f"*|{ch1}"] /= tensor(values).sum() # normalise
 
-# prob(ch3|ch1,ch2) :: O(n**3) <-- the CURSE of dimenstionality begins
+# prob(ch3|ch1,ch2) :: O(n**3) <-- the CURSE of dimenstionality begins; the curse creates sparse matrices
 for ch1 in unique:
     for ch2 in unique:
         values = []
