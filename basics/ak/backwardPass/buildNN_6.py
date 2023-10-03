@@ -11,10 +11,11 @@ from buildDataset_5 import (
 ACROSS_COLUMNS = 0 # helper variable
 ACROSS_ROWS = 1    # helper variable
 BATCH_SIZE = n = 2
-# our characters would be scattered within this space of these number of dimensions
+# our characters would be initially scattered randomly 
+# within this space of these number of dimensions
 embedding_dim = 2 
 neurons_in_hidden_layer = 26
-# creating the mapping to scatter the characters onto this space
+# creating the mapping to scatter randomly the characters onto this space
 embeddings = randn(
     size=(vocab_size, embedding_dim),
     generator=G
@@ -23,6 +24,7 @@ embeddings = randn(
 X_train = embeddings[X] # scattered the training data
 idxs = randint(0, X_train.shape[0], (BATCH_SIZE,), generator=G) # random batch
 X_train_batch, y_train_batch = X_train[idxs], y[idxs]
+
 # a manual linear layer with its own weights and biases
 weights = randn(
     size=(embedding_dim, neurons_in_hidden_layer), generator=G
