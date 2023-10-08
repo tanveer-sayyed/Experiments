@@ -1,15 +1,3 @@
-"""
-Keep in mind:
-    1. shape of tensor whose gradient needs to be calculated
-    2. shape of the tensor == shape of its gradient
-    3. broadcasting affects gradient
-    4. operations along axes affects gradients:
-        - grads might accumulate
-        - grads might not accumulate
-    5. variables, only meant for numerical stability, should have grad = 0.0
-    6. braoadcast in forward pass means a sum in backward pass
-    7. sum in forward pass means a broadcast in backward pass
-"""
 from string import ascii_lowercase
 from torch import Generator, tensor
 
