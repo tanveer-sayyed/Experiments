@@ -2,7 +2,7 @@ from string import ascii_lowercase
 from torch import Generator, tensor
 
 # reproducible results
-G = Generator().manual_seed(103)
+G = Generator().manual_seed(1)
 
 data = [c for c in ascii_lowercase]
 vocab_size = len(data) # unique
