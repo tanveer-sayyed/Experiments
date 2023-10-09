@@ -11,5 +11,6 @@ Modern deep learning draws inspiration from many ﬁelds, especially applied mat
 
 [sources]:
  - Goodfellow, Bengio, Courville - Deep Learning, 2017
+ - https://github.com/karpathy
  - countless articles from the web, with some help from chatGPT (hence repo is public)
  

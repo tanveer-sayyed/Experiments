@@ -13,8 +13,8 @@
 """
 
 import os
-from argparse import ArgumentParser
 import torch.multiprocessing as mp
+from argparse import ArgumentParser
 
 from train import train
 

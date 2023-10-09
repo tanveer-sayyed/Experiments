@@ -1,7 +1,3 @@
-"""
-    [reference]:https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/makemore/makemore_part1_bigrams.ipynb
-"""
-
 from json import loads
 from torch import float32, Generator, multinomial, tensor, zeros
 
