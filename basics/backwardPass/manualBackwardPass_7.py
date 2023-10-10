@@ -34,7 +34,8 @@ compareTheDerivatives("negative_mean_log_likelihood")
 
 
 ##1. negative_mean_log_likelihood = -mean_log_likelihood
-mean_log_likelihood_global_grad = tensor([-1.0]) * \
+mean_log_likelihood_local_grad = -1
+mean_log_likelihood_global_grad = mean_log_likelihood_local_grad * \
                                     negative_mean_log_likelihood_global_grad
 compareTheDerivatives("mean_log_likelihood")
 

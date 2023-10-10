@@ -59,13 +59,15 @@ negative_mean_log_likelihood = -mean_log_likelihood                         ##1.
 # backpropogation would be initiated from: negative_mean_log_likelihood (a scalar)
 # based on this loss, the rearrangement of the scattered points will take place
 # the gradients would direct the scattered points to their final places, eventually
-assert allclose(
-    cross_entropy(logits, y_train_batch), 
-    negative_mean_log_likelihood
-    ), "something went wrong" # sanity check
+
 
 ### PyTorch backward pass
-variables = [
+assert allclose( # sanity check
+    cross_entropy(logits, y_train_batch), 
+    negative_mean_log_likelihood
+    ), "something went wrong"
+for p in parameters: p.grad = None
+for v in [
         'logits',
         'logits_max_along_rows',
         'logits_normalised',
@@ -76,8 +78,5 @@ variables = [
         'log_probabilities',
         'mean_log_likelihood',
         'negative_mean_log_likelihood',
-        ]
-
-for p in parameters: p.grad = None
-for v in variables: eval(v).retain_grad()
+        ]: eval(v).retain_grad()
 negative_mean_log_likelihood.backward()
