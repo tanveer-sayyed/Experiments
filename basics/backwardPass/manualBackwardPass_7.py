@@ -109,16 +109,21 @@ logits_global_grad = logits_global_grad_1 + logits_global_grad_2
 compareTheDerivatives("logits")
 
 
-##10. logits = X_train_batch @ weights + bias
-X_train_batch_global_grad = logits_global_grad @ weights.T
-compareTheDerivatives("X_train_batch")
+##10. logits = X_train_batch_embeds @ weights + bias 
+X_train_batch_embeds_global_grad = logits_global_grad @ weights.T
+compareTheDerivatives("X_train_batch_embeds")
 
 
 ##10. logits = X_train_batch @ weights + bias
-weights_global_grad = X_train_batch.T @ logits_global_grad
+weights_global_grad = X_train_batch_embeds.T @ logits_global_grad
 compareTheDerivatives("weights")
 
 
 ##10. logits = X_train_batch @ weights + bias
 bias_global_grad = logits_global_grad.sum(ALONG_COLUMNS)
 compareTheDerivatives("bias")
+
+##11. X_train_batch_embeds = embeddings[X_train_batch]
+embeddings_global_grad = zeros_like(embeddings, dtype=float32)
+embeddings_global_grad[X_train_batch] += X_train_batch_embeds_global_grad
+compareTheDerivatives("embeddings")
