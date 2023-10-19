@@ -31,7 +31,7 @@ BATCH_SIZE = n = 13
 
 epsilon = 0.0001 # constant added for numerical stability
 embedding_dim = 3
-neurons_in_hidden_layer = 2
+neurons_in_hidden_layer = 26
 embeddings = randn(
     size=(vocab_size, embedding_dim),
     generator=G
@@ -48,7 +48,7 @@ idxs = randint(0, X.shape[0], (BATCH_SIZE,), generator=G)
 X_train_batch, y_train_batch = X[idxs], y[idxs]
 
 #
-parameters = [embeddings, scale_factor_gamma, shift_factor_beta]
+parameters = [embeddings, weights, bias, scale_factor_gamma, shift_factor_beta]
 for p in parameters: p.requires_grad = True # else None
 
 # Manual forward pass
@@ -64,6 +64,45 @@ sigma_squared_b = 1 / (n-1) * X_minus_mu_b_squared.sum( # bassel's correction
 sigma_squared_b_plus_epsilon = sigma_squared_b + epsilon
 sq_root_of_sigma_squared_b_plus_epsilon = sigma_squared_b_plus_epsilon ** 0.5
 normalised_X_train_batch_embeds = X_minus_mu_b / sq_root_of_sigma_squared_b_plus_epsilon
-y_bn = scale_factor_gamma*normalised_X_train_batch_embeds + shift_factor_beta
-# return 42286
-# onward 39566
+logits = scale_factor_gamma*normalised_X_train_batch_embeds + shift_factor_beta
+
+# copy-paste from basics/backwardPass/manualForwardPass_6.py BEGINS >>>
+logits_max_along_rows = logits.max(ALONG_ROWS, keepdims=True).values
+logits_normalised = logits - logits_max_along_rows
+exponentiated = logits_normalised.exp()
+exponentiated_sum_along_rows = exponentiated.sum(ALONG_ROWS, keepdims=True)
+normalised_exponents = exponentiated / exponentiated_sum_along_rows
+req_normalised_exponents = normalised_exponents[arange(n), y_train_batch]
+log_probabilities = req_normalised_exponents.log()
+mean_log_likelihood = log_probabilities.mean()
+negative_mean_log_likelihood = -mean_log_likelihood
+# copy-paste from basics/backwardPass/manualForwardPass_6.py ENDS <<<
+
+### PyTorch backward pass
+assert allclose( # sanity check
+    cross_entropy(logits, y_train_batch), 
+    negative_mean_log_likelihood
+    ), "something went wrong"
+for p in parameters + [
+        logits,
+        X_train_batch_embeds,
+        logits_max_along_rows,
+        logits_normalised,
+        exponentiated,
+        exponentiated_sum_along_rows,
+        normalised_exponents,
+        req_normalised_exponents,
+        log_probabilities,
+        mean_log_likelihood,
+        negative_mean_log_likelihood,
+        normalised_X_train_batch_embeds,
+        X_minus_mu_b,
+        sq_root_of_sigma_squared_b_plus_epsilon,
+        sigma_squared_b_plus_epsilon,
+        sigma_squared_b,
+        X_minus_mu_b_squared,
+        X_i,
+        mu_b,
+        X_train_batch_embeds,
+        ]: p.retain_grad() # for all variables that appear in the forward pass
+negative_mean_log_likelihood.backward()

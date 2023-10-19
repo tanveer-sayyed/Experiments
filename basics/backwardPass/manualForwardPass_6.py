@@ -69,7 +69,7 @@ assert allclose( # sanity check
     negative_mean_log_likelihood
     ), "something went wrong"
 for p in parameters: p.grad = None
-for p in parameters + [ # all variables that appear in the forward pass
+for p in parameters + [
         logits,
         X_train_batch_embeds,
         logits_max_along_rows,
@@ -81,5 +81,5 @@ for p in parameters + [ # all variables that appear in the forward pass
         log_probabilities,
         mean_log_likelihood,
         negative_mean_log_likelihood,
-        ]: p.retain_grad()
+        ]: p.retain_grad() # for all variables that appear in the forward pass
 negative_mean_log_likelihood.backward()
