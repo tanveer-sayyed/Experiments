@@ -1,10 +1,12 @@
 from torch import (
     all, allclose, arange, float32, ones_like,
-    tensor, zeros_like
+    set_printoptions, tensor, zeros_like
     )
 from typing import Tuple
+set_printoptions(precision=16)
 
 from batchNormForwardPass import *
+
 
 def compareTheDerivatives(x:str) -> Tuple[bool, str]:
     torch_grad = eval(x).grad; our_grad = eval(x+"_global_grad")
@@ -56,3 +58,39 @@ logits_global_grad_2[
 logits_global_grad = logits_global_grad_1 + logits_global_grad_2
 # copy-paste from basics/manualBackwardPass_7.ipynb ENDS <<<
 
+
+## logits = scale_factor_gamma*normalised_X_train_batch_embeds + shift_factor_beta
+scale_factor_gamma_local_grad = normalised_X_train_batch_embeds
+scale_factor_gamma_global_grad = \
+    (scale_factor_gamma_local_grad * logits_global_grad).sum(ALONG_COLUMNS, keepdim=True)
+compareTheDerivatives("scale_factor_gamma")
+
+
+## logits = scale_factor_gamma*normalised_X_train_batch_embeds + shift_factor_beta
+normalised_X_train_batch_embeds_local_grad = scale_factor_gamma
+normalised_X_train_batch_embeds_global_grad = \
+    normalised_X_train_batch_embeds_local_grad * logits_global_grad
+compareTheDerivatives("normalised_X_train_batch_embeds")
+
+
+## logits = scale_factor_gamma*normalised_X_train_batch_embeds + shift_factor_beta
+shift_factor_beta_local_grad = tensor([1.0])
+shift_factor_beta_global_grad = \
+    (shift_factor_beta_local_grad * logits_global_grad).sum(ALONG_COLUMNS, keepdim=True)
+compareTheDerivatives("scale_factor_gamma")
+
+
+## normalised_X_train_batch_embeds = X_minus_mu_b / sq_root_of_sigma_squared_b_plus_epsilon
+X_minus_mu_b_local_grad = 1 / sq_root_of_sigma_squared_b_plus_epsilon
+X_minus_mu_b_global_grad = X_minus_mu_b_local_grad * normalised_X_train_batch_embeds_global_grad
+compareTheDerivatives("X_minus_mu_b")
+
+
+
+for (x,y) in zip(normalised_X_train_batch_embeds.grad[0], normalised_X_train_batch_embeds_global_grad[0]):
+    print(x.item())
+    print(y.item())
+    print(x.item()==y.item())
+
+
+all(normalised_X_train_batch_embeds.grad[1] == normalised_X_train_batch_embeds_global_grad[1]).item()

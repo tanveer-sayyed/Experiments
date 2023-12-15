@@ -55,7 +55,7 @@ for ch1 in unique:
             prob["ch3|ch1,ch2"][f"*|{ch1},{ch2}"] /= tensor(values).sum() # normalise
 
 # prediction
-for _ in range(5):
+for _ in range(500):
     out = []
     counter = 0
     while True:

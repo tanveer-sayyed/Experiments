@@ -40,7 +40,7 @@ weights = randn(
     size=(embedding_dim, neurons_in_hidden_layer), generator=G
     ) * (5/3) / (embedding_dim**0.5) # kiaming_normal with golden ration
 bias = randn(size=(neurons_in_hidden_layer,), generator=G) * 0.1
-shift_factor_beta =  randn((1, neurons_in_hidden_layer), generator=G)*0.1 + 0.1
+shift_factor_beta =  randn((1, neurons_in_hidden_layer), generator=G)*0.1
 scale_factor_gamma = randn((1, neurons_in_hidden_layer), generator=G)
 
 # get a random batch
@@ -51,6 +51,16 @@ X_train_batch, y_train_batch = X[idxs], y[idxs]
 parameters = [embeddings, weights, bias, scale_factor_gamma, shift_factor_beta]
 for p in parameters: p.requires_grad = True # else None
 
+"""
+# BatchNorm layer
+bnmeani = 1/n*hprebn.sum(0, keepdim=True)
+bndiff = hprebn - bnmeani
+bndiff2 = bndiff**2
+bnvar = 1/(n-1)*(bndiff2).sum(0, keepdim=True) # note: Bessel's correction (dividing by n-1, not n)
+bnvar_inv = (bnvar + 1e-5)**-0.5
+bnraw = bndiff * bnvar_inv
+hpreact = bngain * bnraw + bnbias
+"""
 # Manual forward pass
 X_train_batch_embeds = embeddings[X_train_batch]
 X_i = X_train_batch_embeds @ weights + bias    # layer input to the BN
