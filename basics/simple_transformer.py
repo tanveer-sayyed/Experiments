@@ -52,8 +52,8 @@ with plt.style.context(('dark_background')):
         marker="*",
         color="orange"
         )
-    ax1.set_xticks(ticks=[], color='black')
-    ax1.set_yticks(ticks=[], color='black')
+    ax1.set_xticks(ticks=[])#, c='black')
+    ax1.set_yticks(ticks=[])#, c='black')
     for i in range(len(input_sequence)):
         ax1.text(x=temp[i][0], y=temp[i][1], s=input_sequence[i], fontsize=8)
     ax1.grid(color='gray', linestyle='--')
@@ -76,8 +76,8 @@ with plt.style.context(('dark_background')):
         marker="*",
         color="gray"
         )
-    ax2.set_xticks(ticks=[], color='black')
-    ax2.set_yticks(ticks=[], color='black')
+    ax2.set_xticks(ticks=[])#, color='black')
+    ax2.set_yticks(ticks=[])#, color='black')
     for i in range(len(input_sequence)):
         ax2.text(x=pe[i][0], y=pe[i][1], s=input_sequence[i], fontsize=8)
     ax2.grid(color='gray', linestyle='--')
@@ -102,14 +102,14 @@ with plt.style.context(('dark_background')):
         marker="*",
         color="yellow"
         )
-    ax3.set_xticks(ticks=[], color='black')
-    ax3.set_yticks(ticks=[], color='black')
+    ax3.set_xticks(ticks=[])# color='black')
+    ax3.set_yticks(ticks=[])#, color='black')
     for i in range(len(input_sequence)):
         ax3.text(x=temp[i][0], y=temp[i][1], s=input_sequence[i], fontsize=8)
     ax3.grid(color='gray', linestyle='--')
     ax3.set_title("our CURRENT output [based " + \
               "\non random embeddings(in orange)]", fontsize=6)
-# plt.savefig("simple_transformer.png", dpi=200)
+plt.savefig("simple_transformer.png", dpi=200)
 plt.show()
 plt.close()
 
@@ -214,13 +214,13 @@ which tells us roughly how important each element in the sequence is. This is th
 this layer — it determines which elements we “pay attention” to. 
 """
 
-heads = 2
-embeddings_per_head = embedding_dim // heads
-q_linear = nn.Linear(embedding_dim, embedding_dim)
-v_linear = nn.Linear(embedding_dim, embedding_dim)
-k_linear = nn.Linear(embedding_dim, embedding_dim)
-dropout = nn.Dropout(0.1)
-out = nn.Linear(embedding_dim, embedding_dim)
+# heads = 2
+# embeddings_per_head = embedding_dim // heads
+# q_linear = nn.Linear(embedding_dim, embedding_dim)
+# v_linear = nn.Linear(embedding_dim, embedding_dim)
+# k_linear = nn.Linear(embedding_dim, embedding_dim)
+# dropout = nn.Dropout(0.1)
+# out = nn.Linear(embedding_dim, embedding_dim)
 
 # q(batch_size, len(input_sequence), embeddings_per_head)
 # k
