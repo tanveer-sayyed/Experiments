@@ -5,7 +5,7 @@ from multiprocessing import Process
 
 from my_logger import log_this_error
 
-class event_scheduler():
+class event_scheduler:
 
     def __init__(self):
         self.processes = []
@@ -56,7 +56,7 @@ class event_scheduler():
             [process.terminate for process in self.processes]
             pass
     
-class recurring_scheduler():
+class recurring_scheduler:
     
     def __init__(self):
         self.processes = []
