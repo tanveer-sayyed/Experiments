@@ -18,3 +18,5 @@ print(f"second friend chances: {probs[1]}")
 print(f"third friend chances: {probs[2]}")
 
 U, s, VT = svd(friends_schedule.data.numpy())
+
+
