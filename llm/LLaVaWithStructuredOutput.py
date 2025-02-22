@@ -45,5 +45,5 @@ for image_document in image_documents:
         prompt_template_str=prompt_template_str,
         output_parser=PydanticOutputParser(Entities),
     )
-    response = mm_program(query_str="""Provide an unambiguous and clear detection of ALL entities present in image.""")
+    response = mm_program(query_str="""Describe ALL entities present in image.""")
     pprint(response)
