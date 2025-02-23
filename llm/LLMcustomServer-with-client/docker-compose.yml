@@ -1,0 +1,40 @@
+services:
+  entity_extractor:
+    build: entity_extractor
+    ports:
+      - 8000:8000
+    volumes:
+      - ./entity_extractor:/app
+    networks:
+      - n_1
+  ollama:
+    tty: true
+    build: ollama
+    pull_policy: always
+    restart: unless-stopped
+    container_name: ollama
+    volumes:
+      - v_1:/ollama
+    ports:
+      - 11434:11434
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_KEEP_ALIVE=24h
+    networks:
+      - n_1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    entrypoint: ["/usr/bin/bash", "/my_llm_model.sh"]
+
+volumes:
+  v_1:
+    driver: local
+
+networks:
+  n_1:
+    driver: bridge

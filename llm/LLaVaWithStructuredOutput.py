@@ -15,13 +15,14 @@ from llama_index.core.schema import ImageDocument
 from llama_index.core.output_parsers import PydanticOutputParser
 from llama_index.core.program import MultiModalLLMCompletionProgram
 from pprint import pprint
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from time import time
+from typing import List
 
 class Entity(BaseModel):
     """Data model for describing an entity"""
     name:str = Field(description="name of the entity")
-    description:str = Filed(description="brief description of the entity")
+    description:str = Field(description="brief description of the entity")
 
 class Entities(BaseModel):
     """Data model for detecting entities in the content"""
