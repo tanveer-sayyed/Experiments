@@ -25,5 +25,3 @@ def performExtraction(prompt:str) -> BaseModel:
         ChatMessage(role="user", content=prompt),
         ])
     return response.message.content
-
-# print(performExtraction(prompt="quich brown fox"))
