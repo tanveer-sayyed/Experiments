@@ -1,2 +1,2 @@
-sudo docker compose down && sudo docker compose up --build
-python client.py
+- sudo docker compose down && sudo docker compose up --build
+- python client.py
