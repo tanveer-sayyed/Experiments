@@ -5,7 +5,7 @@ from createAndCompileGraph import sessionGraph
 
 async def _main():
     # task1
-    context:ContextSchema = dict(a=10, b=0) # user's runtime context
+    context:ContextSchema = dict(a=10, b=9) # user's runtime context
     task1 = create_task(sessionGraph(
         session="user_1",
         context=context

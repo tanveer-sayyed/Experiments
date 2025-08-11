@@ -1,25 +1,26 @@
 READY
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : on_chain_start
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : on_chain_start
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : on_chain_start
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : on_chain_start
 {
   "serialized": null,
   "inputs": {
+    "name": [],
     "add_result": [],
     "div_result": [],
     "mul_result": [],
     "sub_result": [],
     "final_result": []
   },
-  "run_id": "181d3af5-8df2-42ca-a146-9e150afcf7f1",
+  "run_id": "060e4b7b-04d2-41d4-9959-154eb1dee4f9",
   "parent_run_id": null,
   "tags": [],
   "metadata": {}
 }
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : Node.add
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : Node.divide
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : Node.multiply
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : Node.subtract
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : Node.add
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : Node.add
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : Node.divide
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : Node.multiply
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : Node.subtract
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : Node.add
 {
   "name": [],
   "add_result": [
@@ -30,7 +31,7 @@ READY
   "div_result": [],
   "final_result": []
 }
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : Node.divide
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : Node.divide
 {
   "name": [],
   "add_result": [],
@@ -41,7 +42,7 @@ READY
   ],
   "final_result": []
 }
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : Node.multiply
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : Node.multiply
 {
   "name": [],
   "add_result": [],
@@ -52,7 +53,7 @@ READY
   "div_result": [],
   "final_result": []
 }
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : Node.subtract
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : Node.subtract
 {
   "name": [],
   "add_result": [],
@@ -63,8 +64,8 @@ READY
   "div_result": [],
   "final_result": []
 }
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : Node.collect
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : Node.collect
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : Node.collect
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : Node.collect
 {
   "name": [],
   "add_result": [
@@ -96,8 +97,8 @@ READY
     }
   ]
 }
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : Node.welcome
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : Node.welcome
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : Node.welcome
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : Node.welcome
 {
   "name": [
     "HelloO! ALAN"
@@ -135,8 +136,8 @@ READY
     }
   ]
 }
-139639837334608 Mon Aug 11 14:10:41 2025 : [START] : on_chain_end
-139639837334608 Mon Aug 11 14:10:41 2025 : [END]   : on_chain_end
+139639804329424 Mon Aug 11 14:18:11 2025 : [START] : on_chain_end
+139639804329424 Mon Aug 11 14:18:11 2025 : [END]   : on_chain_end
 {
   "outputs": {
     "name": [
@@ -197,7 +198,7 @@ READY
       }
     ]
   },
-  "run_id": "181d3af5-8df2-42ca-a146-9e150afcf7f1",
+  "run_id": "060e4b7b-04d2-41d4-9959-154eb1dee4f9",
   "parent_run_id": null,
   "tags": []
 }

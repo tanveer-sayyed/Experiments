@@ -39,6 +39,7 @@ async def sessionGraph(session:str, context:ContextSchema):
 
     # ready to invoke
     state:StateSchema = dict(
+        name=list(),
         add_result=list(),
         div_result=list(),
         mul_result=list(),

@@ -1,42 +1,141 @@
 READY
-139639830125680 Mon Aug 11 14:10:41 2025 : [START] : on_chain_start
-139639830125680 Mon Aug 11 14:10:41 2025 : [END]   : on_chain_start
+139639804328464 Mon Aug 11 14:18:11 2025 : [START] : on_chain_start
+139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : on_chain_start
 {
   "serialized": null,
   "inputs": {
+    "name": [],
     "add_result": [],
     "div_result": [],
     "mul_result": [],
     "sub_result": [],
     "final_result": []
   },
-  "run_id": "66c51306-f261-4e76-9d5c-c35547178088",
+  "run_id": "45f716db-ec7c-4fa8-b128-94767b5f6f7b",
   "parent_run_id": null,
   "tags": [],
   "metadata": {}
 }
-139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.add
-139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.divide
-139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.multiply
-139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.subtract
-139639830125680 Mon Aug 11 14:10:41 2025 : [END]   : Node.add
+139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.add
+139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.divide
+139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.multiply
+139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.subtract
+139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.add
 {
   "name": [],
   "add_result": [
-    10
+    19
   ],
   "sub_result": [],
   "mul_result": [],
   "div_result": [],
   "final_result": []
 }
-139639830125680 Mon Aug 11 14:10:41 2025 : [ERROR] : Node.divide
-division by zero
-139639830125680 Mon Aug 11 14:10:41 2025 : [START] : on_chain_error
-139639830125680 Mon Aug 11 14:10:41 2025 : [END]   : on_chain_error
+139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.divide
 {
-  "error": "cannot access local variable 'result' where it is not associated with a value",
-  "run_id": "66c51306-f261-4e76-9d5c-c35547178088",
+  "name": [],
+  "add_result": [],
+  "sub_result": [],
+  "mul_result": [],
+  "div_result": [
+    1.1111111111111112
+  ],
+  "final_result": []
+}
+139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.multiply
+{
+  "name": [],
+  "add_result": [],
+  "sub_result": [],
+  "mul_result": [
+    90
+  ],
+  "div_result": [],
+  "final_result": []
+}
+139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.subtract
+{
+  "name": [],
+  "add_result": [],
+  "sub_result": [
+    1
+  ],
+  "mul_result": [],
+  "div_result": [],
+  "final_result": []
+}
+139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.collect
+139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.collect
+{
+  "name": [],
+  "add_result": [
+    19
+  ],
+  "sub_result": [
+    1
+  ],
+  "mul_result": [
+    90
+  ],
+  "div_result": [
+    1.1111111111111112
+  ],
+  "final_result": [
+    {
+      "addition": [
+        19
+      ],
+      "subtraction": [
+        1
+      ],
+      "multiplication": [
+        90
+      ],
+      "division": [
+        1.1111111111111112
+      ]
+    }
+  ]
+}
+139639804328464 Mon Aug 11 14:18:11 2025 : [START] : on_chain_end
+139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : on_chain_end
+{
+  "outputs": {
+    "name": [],
+    "add_result": [
+      19,
+      19
+    ],
+    "sub_result": [
+      1,
+      1
+    ],
+    "mul_result": [
+      90,
+      90
+    ],
+    "div_result": [
+      1.1111111111111112,
+      1.1111111111111112
+    ],
+    "final_result": [
+      {
+        "addition": [
+          19
+        ],
+        "subtraction": [
+          1
+        ],
+        "multiplication": [
+          90
+        ],
+        "division": [
+          1.1111111111111112
+        ]
+      }
+    ]
+  },
+  "run_id": "45f716db-ec7c-4fa8-b128-94767b5f6f7b",
   "parent_run_id": null,
   "tags": []
 }
