@@ -16,7 +16,7 @@ class ContextSchema(TypedDict):
     a:int
     b:int
 
-class Node():
+class Node:
     def __init__(self, logger:str) -> None:
         self.logger = logger
 
