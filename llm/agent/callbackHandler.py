@@ -45,7 +45,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_agent_finish(
@@ -64,7 +64,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_chain_end(
@@ -83,7 +83,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_chain_error(
@@ -102,7 +102,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_chain_start(
@@ -125,7 +125,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "parent_run_id":parent_run_id,
             "tags":tags,
             "metadata":metadata
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_chat_model_start(
@@ -148,7 +148,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "parent_run_id":parent_run_id,
             "tags":tags,
             "metadata":metadata
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_custom_event(
@@ -169,7 +169,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "tags":tags,
             "metadata":metadata
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_llm_end(
@@ -188,7 +188,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_llm_error(
@@ -207,7 +207,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_llm_new_token(
@@ -228,7 +228,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_llm_start(
@@ -251,7 +251,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "parent_run_id":parent_run_id,
             "metadata":metadata,
             "tags":tags,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_retriever_end(
@@ -270,7 +270,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_retriever_error(
@@ -289,7 +289,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_retriever_start(
@@ -312,7 +312,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "parent_run_id":parent_run_id,
             "tags":tags,
             "metadata":metadata
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_retry(
@@ -329,7 +329,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "retry_state":retry_state,
             "run_id":run_id,
             "parent_run_id":parent_run_id,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_text(
@@ -348,7 +348,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_tool_end(
@@ -367,7 +367,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_tool_error(
@@ -386,7 +386,7 @@ class LoggingCallback(AsyncCallbackHandler):
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
 
     async def on_tool_start(
@@ -411,5 +411,5 @@ class LoggingCallback(AsyncCallbackHandler):
             "tags":tags,
             "metadata":metadata,
             "inputs":inputs,
-            }, cls=UUIDEncoder)
+            }, cls=UUIDEncoder, indent=2)
         await self.end_message(name, d)
