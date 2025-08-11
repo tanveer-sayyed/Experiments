@@ -3,7 +3,7 @@ from langgraph.graph import END, START
 from langgraph.graph._node import StateNode
 from langgraph.runtime import get_runtime
 from operator import add as reducer
-from typing import Annotated, Tuple, TypedDict
+from typing import Annotated, Callable, Tuple, TypedDict
 
 class StateSchema(TypedDict):
     add_result:Annotated[list, reducer]
@@ -20,7 +20,7 @@ class Node():
     def __init__(self, logger:str) -> None:
         self.logger = logger
 
-    def trace(self, func):
+    def trace(self, func) -> Callable:
         async def inner(*args, **kwargs):
             func_name = f"{func.__qualname__}"
             await self.logger(f"[START] : {func_name}")
