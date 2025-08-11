@@ -20,6 +20,7 @@ async def sessionGraph(session:str, context:ContextSchema):
     builder.add_node(**(await node("multiply")))
     builder.add_node(**(await node("subtract")))
     builder.add_node(**(await node("collect")))
+    builder.add_node(**(await node("welcome")))
     # add edges
     builder.add_edge(**(await edge("START -> add")))
     builder.add_edge(**(await edge("START -> divide")))
@@ -29,7 +30,11 @@ async def sessionGraph(session:str, context:ContextSchema):
     builder.add_edge(**(await edge("divide -> collect")))
     builder.add_edge(**(await edge("multiply -> collect")))
     builder.add_edge(**(await edge("subtract -> collect")))
+    builder.add_conditional_edges(**(await edge(
+        "collect --is_welcome_need-> welcome|END"
+        )))
     builder.add_edge(**(await edge("collect -> END")))
+    builder.add_edge(**(await edge("welcome -> END")))
     graph = builder.compile()
 
     # ready to invoke
@@ -46,4 +51,3 @@ async def sessionGraph(session:str, context:ContextSchema):
                 verbose=True,
                 config={"callbacks": callback_manager}
                 )
-    

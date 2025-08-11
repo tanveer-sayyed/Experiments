@@ -5,19 +5,19 @@ from createAndCompileGraph import sessionGraph
 
 async def _main():
     # task1
-    context:ContextSchema = dict(a=10, b=5)
+    context:ContextSchema = dict(a=10, b=0) # user's runtime context
     task1 = create_task(sessionGraph(
         session="user_1",
         context=context
         ))
     # task1
-    context:ContextSchema = dict(a=20, b=-4)
+    context:ContextSchema = dict(a=20, b=8, name="Alan")  # user's runtime context
     task2 = create_task(sessionGraph(
         session="user_2",
         context=context
         ))
     # concurrent execution
-    results = await gather(task1, task2) 
+    results = await gather(task1, task2)
     print(results)
 
 async def main():

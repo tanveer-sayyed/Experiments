@@ -3,9 +3,10 @@ from langgraph.graph import END, START
 from langgraph.graph._node import StateNode
 from langgraph.runtime import get_runtime
 from operator import add as reducer
-from typing import Annotated, Callable, Tuple, TypedDict
+from typing import Annotated, Callable, Optional, Tuple, TypedDict
 
 class StateSchema(TypedDict):
+    name:Annotated[list, reducer]
     add_result:Annotated[list, reducer]
     sub_result:Annotated[list, reducer]
     mul_result:Annotated[list, reducer]
@@ -15,6 +16,7 @@ class StateSchema(TypedDict):
 class ContextSchema(TypedDict):
     a:int
     b:int
+    name:Optional[str]
 
 class Node:
     def __init__(self, logger:str) -> None:
@@ -67,6 +69,12 @@ class Node:
                 "division": state.get("div_result")
             }]
         return state
+    @staticmethod
+    async def welcome(state:StateSchema) -> StateSchema:
+        """Multiply two numbers together."""
+        runtime = get_runtime(ContextSchema)
+        state["name"] = ["HelloO! " + runtime.context["name"].upper()]
+        return state
     async def __call__(self, node:str) -> Tuple[str, StateNode]:
         return dict(
             node=node,
@@ -80,7 +88,7 @@ class Edge:
         self.nodes["END"] = END
         self.nodes["START"] = START
     async def __call__(self, edge:str):
-        if "--" not in edge:
+        if " --" not in edge:
             start_key, end_key = edge.split(" -> ")
             return dict(
                 end_key=self.nodes[end_key],
@@ -94,5 +102,9 @@ class Edge:
             return dict(
                 source=self.nodes[source],
                 path=self.__getattribute__(path),
-                path_map=path_map
+                path_map=[self.nodes[p] for p in path_map]
                 )
+    @staticmethod
+    async def is_welcome_need(state:StateSchema) -> StateSchema:
+        runtime = get_runtime(ContextSchema)
+        return "welcome" if runtime.context.get("name") else END

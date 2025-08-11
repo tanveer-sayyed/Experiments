@@ -1,0 +1,42 @@
+READY
+139639830125680 Mon Aug 11 14:10:41 2025 : [START] : on_chain_start
+139639830125680 Mon Aug 11 14:10:41 2025 : [END]   : on_chain_start
+{
+  "serialized": null,
+  "inputs": {
+    "add_result": [],
+    "div_result": [],
+    "mul_result": [],
+    "sub_result": [],
+    "final_result": []
+  },
+  "run_id": "66c51306-f261-4e76-9d5c-c35547178088",
+  "parent_run_id": null,
+  "tags": [],
+  "metadata": {}
+}
+139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.add
+139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.divide
+139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.multiply
+139639830125680 Mon Aug 11 14:10:41 2025 : [START] : Node.subtract
+139639830125680 Mon Aug 11 14:10:41 2025 : [END]   : Node.add
+{
+  "name": [],
+  "add_result": [
+    10
+  ],
+  "sub_result": [],
+  "mul_result": [],
+  "div_result": [],
+  "final_result": []
+}
+139639830125680 Mon Aug 11 14:10:41 2025 : [ERROR] : Node.divide
+division by zero
+139639830125680 Mon Aug 11 14:10:41 2025 : [START] : on_chain_error
+139639830125680 Mon Aug 11 14:10:41 2025 : [END]   : on_chain_error
+{
+  "error": "cannot access local variable 'result' where it is not associated with a value",
+  "run_id": "66c51306-f261-4e76-9d5c-c35547178088",
+  "parent_run_id": null,
+  "tags": []
+}
