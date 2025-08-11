@@ -1,0 +1,22 @@
+READY
+140089719987536 Mon Aug 11 09:58:27 2025 : [START] : on_chain_start
+140089719987536 Mon Aug 11 09:58:27 2025 : [END]   : on_chain_start
+{"serialized": null, "inputs": {"add_result": [], "div_result": [], "mul_result": [], "sub_result": [], "final_result": []}, "run_id": "37f06bd0-1a3d-447d-9d42-eade0daff327", "parent_run_id": null, "tags": [], "metadata": {}}
+140089719987536 Mon Aug 11 09:58:27 2025 : [START] : Node.add
+140089719987536 Mon Aug 11 09:58:27 2025 : [START] : Node.divide
+140089719987536 Mon Aug 11 09:58:27 2025 : [START] : Node.multiply
+140089719987536 Mon Aug 11 09:58:27 2025 : [START] : Node.subtract
+140089719987536 Mon Aug 11 09:58:27 2025 : [END]   : Node.add
+{"add_result": [16], "sub_result": [], "mul_result": [], "div_result": [], "final_result": []}
+140089719987536 Mon Aug 11 09:58:27 2025 : [END]   : Node.divide
+{"add_result": [], "sub_result": [], "mul_result": [], "div_result": [-5.0], "final_result": []}
+140089719987536 Mon Aug 11 09:58:27 2025 : [END]   : Node.multiply
+{"add_result": [], "sub_result": [], "mul_result": [-80], "div_result": [], "final_result": []}
+140089719987536 Mon Aug 11 09:58:27 2025 : [END]   : Node.subtract
+{"add_result": [], "sub_result": [24], "mul_result": [], "div_result": [], "final_result": []}
+140089719987536 Mon Aug 11 09:58:27 2025 : [START] : Node.collect
+140089719987536 Mon Aug 11 09:58:27 2025 : [END]   : Node.collect
+{"add_result": [16], "sub_result": [24], "mul_result": [-80], "div_result": [-5.0], "final_result": [{"addition": [16], "subtraction": [24], "multiplication": [-80], "division": [-5.0]}]}
+140089719987536 Mon Aug 11 09:58:27 2025 : [START] : on_chain_end
+140089719987536 Mon Aug 11 09:58:27 2025 : [END]   : on_chain_end
+{"outputs": {"add_result": [16, 16], "sub_result": [24, 24], "mul_result": [-80, -80], "div_result": [-5.0, -5.0], "final_result": [{"addition": [16], "subtraction": [24], "multiplication": [-80], "division": [-5.0]}]}, "run_id": "37f06bd0-1a3d-447d-9d42-eade0daff327", "parent_run_id": null, "tags": []}

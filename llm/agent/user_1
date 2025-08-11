@@ -1,0 +1,22 @@
+READY
+140089719988304 Mon Aug 11 09:58:27 2025 : [START] : on_chain_start
+140089719988304 Mon Aug 11 09:58:27 2025 : [END]   : on_chain_start
+{"serialized": null, "inputs": {"add_result": [], "div_result": [], "mul_result": [], "sub_result": [], "final_result": []}, "run_id": "1ed967ac-81e0-4d26-8f07-21c083645ded", "parent_run_id": null, "tags": [], "metadata": {}}
+140089719988304 Mon Aug 11 09:58:27 2025 : [START] : Node.add
+140089719988304 Mon Aug 11 09:58:27 2025 : [START] : Node.divide
+140089719988304 Mon Aug 11 09:58:27 2025 : [START] : Node.multiply
+140089719988304 Mon Aug 11 09:58:27 2025 : [START] : Node.subtract
+140089719988304 Mon Aug 11 09:58:27 2025 : [END]   : Node.add
+{"add_result": [15], "sub_result": [], "mul_result": [], "div_result": [], "final_result": []}
+140089719988304 Mon Aug 11 09:58:27 2025 : [END]   : Node.divide
+{"add_result": [], "sub_result": [], "mul_result": [], "div_result": [2.0], "final_result": []}
+140089719988304 Mon Aug 11 09:58:27 2025 : [END]   : Node.multiply
+{"add_result": [], "sub_result": [], "mul_result": [50], "div_result": [], "final_result": []}
+140089719988304 Mon Aug 11 09:58:27 2025 : [END]   : Node.subtract
+{"add_result": [], "sub_result": [5], "mul_result": [], "div_result": [], "final_result": []}
+140089719988304 Mon Aug 11 09:58:27 2025 : [START] : Node.collect
+140089719988304 Mon Aug 11 09:58:27 2025 : [END]   : Node.collect
+{"add_result": [15], "sub_result": [5], "mul_result": [50], "div_result": [2.0], "final_result": [{"addition": [15], "subtraction": [5], "multiplication": [50], "division": [2.0]}]}
+140089719988304 Mon Aug 11 09:58:27 2025 : [START] : on_chain_end
+140089719988304 Mon Aug 11 09:58:27 2025 : [END]   : on_chain_end
+{"outputs": {"add_result": [15, 15], "sub_result": [5, 5], "mul_result": [50, 50], "div_result": [2.0, 2.0], "final_result": [{"addition": [15], "subtraction": [5], "multiplication": [50], "division": [2.0]}]}, "run_id": "1ed967ac-81e0-4d26-8f07-21c083645ded", "parent_run_id": null, "tags": []}
