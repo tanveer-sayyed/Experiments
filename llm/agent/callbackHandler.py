@@ -12,16 +12,22 @@ from langchain_core.outputs.generation import GenerationChunk
 from langchain_core.outputs.llm_result import LLMResult
 from langchain_core.runnables.graph import UUID
 from tenacity import RetryCallState
-from typing import Any, Sequence
+from typing import Any, Awaitable, Sequence
 
 from utils import UUIDEncoder
 
 class LoggingCallback(AsyncCallbackHandler):
     """Handles logging of graph execution"""
 
-    def __init__(self, logger, *args, **kwargs) -> None:
+    def __init__(
+            self,
+            logger:Awaitable,
+            populateMetrics:Awaitable,
+            *args, **kwargs
+            ) -> None:
         super().__init__(*args, **kwargs)
         self.logger = logger
+        self.metric = populateMetrics
 
     async def start_message(self, which:str) -> None:
         await self.logger(f"[START] : {which}")

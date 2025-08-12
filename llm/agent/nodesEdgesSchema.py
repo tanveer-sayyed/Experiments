@@ -3,7 +3,7 @@ from langgraph.graph import END, START
 from langgraph.graph._node import StateNode
 from langgraph.runtime import get_runtime
 from operator import add as reducer
-from typing import Annotated, Callable, Optional, Tuple, TypedDict
+from typing import Annotated, Awaitable, Callable, Optional, Tuple, TypedDict
 
 class StateSchema(TypedDict):
     name:Annotated[list, reducer]
@@ -19,18 +19,22 @@ class ContextSchema(TypedDict):
     name:Optional[str]
 
 class Node:
-    def __init__(self, logger:str) -> None:
+    def __init__(self, logger:Awaitable, populateMetrics:Awaitable) -> None:
         self.logger = logger
+        self.metric = populateMetrics
 
     def trace(self, func) -> Callable:
         async def inner(*args, **kwargs):
             func_name = f"{func.__qualname__}"
             await self.logger(f"[START] : {func_name}")
+            await self.metric("Metrics.node.node_order", func_name)
             try:
                 result = await func(*args, **kwargs)
                 return result
             except Exception as e:
                 await self.logger(f"[ERROR] : {func_name}\n{str(e)}")
+                await self.metric("Metrics.node.error.where", func_name)
+                await self.metric("Metrics.node.error.description", str(e))
                 raise # TODO: implement error handling here
             finally: await self.logger(f"[END]   : {func_name}\n{dumps(result, indent=2)}")
         return inner

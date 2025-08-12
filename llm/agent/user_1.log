@@ -1,6 +1,6 @@
 READY
-139639804328464 Mon Aug 11 14:18:11 2025 : [START] : on_chain_start
-139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : on_chain_start
+139927871528528 Tue Aug 12 19:12:58 2025 : [START] : on_chain_start
+139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : on_chain_start
 {
   "serialized": null,
   "inputs": {
@@ -11,131 +11,131 @@ READY
     "sub_result": [],
     "final_result": []
   },
-  "run_id": "45f716db-ec7c-4fa8-b128-94767b5f6f7b",
+  "run_id": "52cfabb4-dd45-431a-9d6a-e0baee209e87",
   "parent_run_id": null,
   "tags": [],
   "metadata": {}
 }
-139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.add
-139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.divide
-139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.multiply
-139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.subtract
-139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.add
+139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.add
+139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.divide
+139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.multiply
+139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.subtract
+139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.add
 {
   "name": [],
   "add_result": [
-    19
+    17
   ],
   "sub_result": [],
   "mul_result": [],
   "div_result": [],
   "final_result": []
 }
-139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.divide
+139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.divide
 {
   "name": [],
   "add_result": [],
   "sub_result": [],
   "mul_result": [],
   "div_result": [
-    1.1111111111111112
+    1.4285714285714286
   ],
   "final_result": []
 }
-139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.multiply
+139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.multiply
 {
   "name": [],
   "add_result": [],
   "sub_result": [],
   "mul_result": [
-    90
+    70
   ],
   "div_result": [],
   "final_result": []
 }
-139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.subtract
+139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.subtract
 {
   "name": [],
   "add_result": [],
   "sub_result": [
-    1
+    3
   ],
   "mul_result": [],
   "div_result": [],
   "final_result": []
 }
-139639804328464 Mon Aug 11 14:18:11 2025 : [START] : Node.collect
-139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : Node.collect
+139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.collect
+139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.collect
 {
   "name": [],
   "add_result": [
-    19
+    17
   ],
   "sub_result": [
-    1
+    3
   ],
   "mul_result": [
-    90
+    70
   ],
   "div_result": [
-    1.1111111111111112
+    1.4285714285714286
   ],
   "final_result": [
     {
       "addition": [
-        19
+        17
       ],
       "subtraction": [
-        1
+        3
       ],
       "multiplication": [
-        90
+        70
       ],
       "division": [
-        1.1111111111111112
+        1.4285714285714286
       ]
     }
   ]
 }
-139639804328464 Mon Aug 11 14:18:11 2025 : [START] : on_chain_end
-139639804328464 Mon Aug 11 14:18:11 2025 : [END]   : on_chain_end
+139927871528528 Tue Aug 12 19:12:58 2025 : [START] : on_chain_end
+139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : on_chain_end
 {
   "outputs": {
     "name": [],
     "add_result": [
-      19,
-      19
+      17,
+      17
     ],
     "sub_result": [
-      1,
-      1
+      3,
+      3
     ],
     "mul_result": [
-      90,
-      90
+      70,
+      70
     ],
     "div_result": [
-      1.1111111111111112,
-      1.1111111111111112
+      1.4285714285714286,
+      1.4285714285714286
     ],
     "final_result": [
       {
         "addition": [
-          19
+          17
         ],
         "subtraction": [
-          1
+          3
         ],
         "multiplication": [
-          90
+          70
         ],
         "division": [
-          1.1111111111111112
+          1.4285714285714286
         ]
       }
     ]
   },
-  "run_id": "45f716db-ec7c-4fa8-b128-94767b5f6f7b",
+  "run_id": "52cfabb4-dd45-431a-9d6a-e0baee209e87",
   "parent_run_id": null,
   "tags": []
 }
