@@ -13,7 +13,6 @@ from langchain_core.tools import BaseTool
 
 MODEL = "gpt-3.5-turbo"
 # client = ChatOpenAI(api_key=getenv("OPENAI_API_KEY"))
-# client = ChatOpenAI(api_key="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")
 client = ChatOllama(model="mistral:7b", base_url="http://localhost:11435")
 
 
