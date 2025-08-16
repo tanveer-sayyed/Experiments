@@ -1,141 +1,16 @@
 READY
-139927871528528 Tue Aug 12 19:12:58 2025 : [START] : on_chain_start
-139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : on_chain_start
-{
-  "serialized": null,
-  "inputs": {
-    "name": [],
-    "add_result": [],
-    "div_result": [],
-    "mul_result": [],
-    "sub_result": [],
-    "final_result": []
-  },
-  "run_id": "52cfabb4-dd45-431a-9d6a-e0baee209e87",
-  "parent_run_id": null,
-  "tags": [],
-  "metadata": {}
-}
-139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.add
-139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.divide
-139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.multiply
-139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.subtract
-139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.add
-{
-  "name": [],
-  "add_result": [
-    17
-  ],
-  "sub_result": [],
-  "mul_result": [],
-  "div_result": [],
-  "final_result": []
-}
-139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.divide
-{
-  "name": [],
-  "add_result": [],
-  "sub_result": [],
-  "mul_result": [],
-  "div_result": [
-    1.4285714285714286
-  ],
-  "final_result": []
-}
-139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.multiply
-{
-  "name": [],
-  "add_result": [],
-  "sub_result": [],
-  "mul_result": [
-    70
-  ],
-  "div_result": [],
-  "final_result": []
-}
-139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.subtract
-{
-  "name": [],
-  "add_result": [],
-  "sub_result": [
-    3
-  ],
-  "mul_result": [],
-  "div_result": [],
-  "final_result": []
-}
-139927871528528 Tue Aug 12 19:12:58 2025 : [START] : Node.collect
-139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : Node.collect
-{
-  "name": [],
-  "add_result": [
-    17
-  ],
-  "sub_result": [
-    3
-  ],
-  "mul_result": [
-    70
-  ],
-  "div_result": [
-    1.4285714285714286
-  ],
-  "final_result": [
-    {
-      "addition": [
-        17
-      ],
-      "subtraction": [
-        3
-      ],
-      "multiplication": [
-        70
-      ],
-      "division": [
-        1.4285714285714286
-      ]
-    }
-  ]
-}
-139927871528528 Tue Aug 12 19:12:58 2025 : [START] : on_chain_end
-139927871528528 Tue Aug 12 19:12:58 2025 : [END]   : on_chain_end
-{
-  "outputs": {
-    "name": [],
-    "add_result": [
-      17,
-      17
-    ],
-    "sub_result": [
-      3,
-      3
-    ],
-    "mul_result": [
-      70,
-      70
-    ],
-    "div_result": [
-      1.4285714285714286,
-      1.4285714285714286
-    ],
-    "final_result": [
-      {
-        "addition": [
-          17
-        ],
-        "subtraction": [
-          3
-        ],
-        "multiplication": [
-          70
-        ],
-        "division": [
-          1.4285714285714286
-        ]
-      }
-    ]
-  },
-  "run_id": "52cfabb4-dd45-431a-9d6a-e0baee209e87",
-  "parent_run_id": null,
-  "tags": []
-}
+2025-08-16 12:39:17.314941 : [START] : Tool.add
+2025-08-16 12:39:17.315644 : [ERROR] : Tool.add
+object int can't be used in 'await' expression
+2025-08-16 12:43:28.415284 : [START] : Tool.add
+2025-08-16 12:43:28.416943 : [END]   : Tool.add
+8.0
+2025-08-16 12:44:57.908660 : [START] : Tool.add
+2025-08-16 12:44:57.909761 : [END]   : Tool.add
+8.0
+2025-08-16 12:45:05.453103 : [START] : Tool.divide
+2025-08-16 12:45:05.454552 : [END]   : Tool.divide
+1.6666666666666667
+2025-08-16 12:48:40.627249 : [START] : Tool.divide
+2025-08-16 12:48:40.628498 : [END]   : Tool.divide
+1.6666666666666667

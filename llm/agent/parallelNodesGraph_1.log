@@ -1,0 +1,154 @@
+READY
+2025-08-16 19:13:11.602130 : [START] : on_chain_start
+2025-08-16 19:13:11.602877 : [END]   : on_chain_start
+{
+  "serialized": null,
+  "inputs": {
+    "name": [],
+    "welcome_msg": [],
+    "add_result": [],
+    "div_result": [],
+    "mul_result": [],
+    "sub_result": [],
+    "final_result": []
+  },
+  "run_id": "287418f2-da48-43e7-9158-edf1931f48b2",
+  "parent_run_id": null,
+  "tags": [],
+  "metadata": {}
+}
+2025-08-16 19:13:11.605998 : [START] : Node.add
+2025-08-16 19:13:11.606538 : [START] : Node.divide
+2025-08-16 19:13:11.607014 : [START] : Node.multiply
+2025-08-16 19:13:11.607395 : [START] : Node.subtract
+2025-08-16 19:13:11.608275 : [END]   : Node.add
+{
+  "name": [],
+  "welcome_msg": [],
+  "add_result": [
+    11
+  ],
+  "sub_result": [],
+  "mul_result": [],
+  "div_result": [],
+  "final_result": [],
+  "messages": []
+}
+2025-08-16 19:13:11.608784 : [END]   : Node.divide
+{
+  "name": [],
+  "welcome_msg": [],
+  "add_result": [],
+  "sub_result": [],
+  "mul_result": [],
+  "div_result": [
+    10.0
+  ],
+  "final_result": [],
+  "messages": []
+}
+2025-08-16 19:13:11.609461 : [END]   : Node.multiply
+{
+  "name": [],
+  "welcome_msg": [],
+  "add_result": [],
+  "sub_result": [],
+  "mul_result": [
+    10
+  ],
+  "div_result": [],
+  "final_result": [],
+  "messages": []
+}
+2025-08-16 19:13:11.610238 : [END]   : Node.subtract
+{
+  "name": [],
+  "welcome_msg": [],
+  "add_result": [],
+  "sub_result": [
+    9
+  ],
+  "mul_result": [],
+  "div_result": [],
+  "final_result": [],
+  "messages": []
+}
+2025-08-16 19:13:11.611675 : [START] : Node.collect
+2025-08-16 19:13:11.612839 : [END]   : Node.collect
+{
+  "name": [],
+  "welcome_msg": [],
+  "add_result": [
+    11
+  ],
+  "sub_result": [
+    9
+  ],
+  "mul_result": [
+    10
+  ],
+  "div_result": [
+    10.0
+  ],
+  "final_result": [
+    {
+      "addition": [
+        11
+      ],
+      "subtraction": [
+        9
+      ],
+      "multiplication": [
+        10
+      ],
+      "division": [
+        10.0
+      ]
+    }
+  ],
+  "messages": []
+}
+2025-08-16 19:13:11.613906 : [START] : on_chain_end
+2025-08-16 19:13:11.615446 : [END]   : on_chain_end
+{
+  "outputs": {
+    "name": [],
+    "welcome_msg": [],
+    "add_result": [
+      11,
+      11
+    ],
+    "sub_result": [
+      9,
+      9
+    ],
+    "mul_result": [
+      10,
+      10
+    ],
+    "div_result": [
+      10.0,
+      10.0
+    ],
+    "final_result": [
+      {
+        "addition": [
+          11
+        ],
+        "subtraction": [
+          9
+        ],
+        "multiplication": [
+          10
+        ],
+        "division": [
+          10.0
+        ]
+      }
+    ],
+    "messages": []
+  },
+  "run_id": "287418f2-da48-43e7-9158-edf1931f48b2",
+  "parent_run_id": null,
+  "tags": []
+}

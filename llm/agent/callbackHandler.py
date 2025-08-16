@@ -1,22 +1,24 @@
 """
     https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.base.AsyncCallbackHandler.html#langchain_core.callbacks.base.AsyncCallbackHandler
+    https://langchain-ai.github.io/langgraph/how-tos/tool-calling/#llm-provider-tools
 """
 
 from json import dumps
 from langchain_core.agents import AgentAction, AgentFinish
-from langchain_core.callbacks.base import AsyncCallbackHandler
+from langchain_core.callbacks.base import BaseCallbackHandler
 from langchain_core.documents.base import Document
 from langchain_core.messages.base import BaseMessage
 from langchain_core.outputs.chat_generation import ChatGenerationChunk
 from langchain_core.outputs.generation import GenerationChunk
 from langchain_core.outputs.llm_result import LLMResult
 from langchain_core.runnables.graph import UUID
+# from langchain.load.dump import dumps as l_dumps
 from tenacity import RetryCallState
 from typing import Any, Awaitable, Sequence
 
 from utils import UUIDEncoder
 
-class LoggingCallback(AsyncCallbackHandler):
+class CustomAsyncCallbacks(BaseCallbackHandler):
     """Handles logging of graph execution"""
 
     def __init__(
@@ -37,8 +39,8 @@ class LoggingCallback(AsyncCallbackHandler):
 
     async def on_agent_action(
         self,
-        *,
         action: AgentAction,
+        *,
         run_id: UUID,
         parent_run_id: UUID | None = None,
         tags: list[str] | None = None,
@@ -47,7 +49,8 @@ class LoggingCallback(AsyncCallbackHandler):
         name = "on_agent_action"
         await self.start_message(name)
         d = dumps({
-            "action":action,
+            # "action":action,
+            "action":dict(action),
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
@@ -66,7 +69,7 @@ class LoggingCallback(AsyncCallbackHandler):
         name = "on_agent_finish"
         await self.start_message(name)
         d = dumps({
-            "finish":finish,
+            "finish":dict(finish),
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags
@@ -126,7 +129,7 @@ class LoggingCallback(AsyncCallbackHandler):
         await self.start_message(name)
         d = dumps({
             "serialized":serialized,
-            "inputs":inputs,
+            "inputs":dict(inputs),
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
