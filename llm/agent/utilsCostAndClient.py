@@ -14,12 +14,10 @@ from langchain_core.tools import BaseTool
 
 MODEL = "gpt-3.5-turbo"
 # client = ChatOpenAI(api_key=getenv("OPENAI_API_KEY"))
-<<<<<<< HEAD:llm/agent/utilsCostAndClient.py
 client = ChatOllama(
     model="mistral:7b",
     base_url="http://localhost:11435"
     )
->>>>>>> 51d6a176c84a9160caa8f8610a697cdc32040d1c:llm/agent/utils.py
 
 class UUIDEncoder(JSONEncoder):
     def default(self, obj):
