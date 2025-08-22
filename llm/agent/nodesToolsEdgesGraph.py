@@ -1,11 +1,24 @@
+from langchain import hub
+from langchain_community.embeddings import OllamaEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_core.callbacks.base import BaseCallbackManager
+from langchain_core.documents import Document
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.load import load
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.vectorstores.base import VectorStoreRetriever
+from langchain_ollama import OllamaLLM
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langgraph.graph import END, START, MessagesState, StateGraph
 from langgraph.graph._node import StateNode
 from langgraph.prebuilt import ToolNode
-from langgraph.runtime import get_runtime
+from langgraph.runtime import Runtime, get_runtime
 
-from stateAndContextSchema import StateSchema, ParallelNodesGraphContext
+from typing import Optional
+
+from stateAndContextSchema import StateSchema, RetrieverGraphSchema
 from trace_ import Trace
-from utils import client
+from utilsCostAndClient import client
 
 class Tool(Trace):
     def __init__(self, logger, populateMetrics) -> None:
@@ -94,94 +107,156 @@ class Node(Trace):
     @staticmethod
     async def add(state:StateSchema) -> StateSchema:
         """Add two numbers together."""
-        runtime = get_runtime(ParallelNodesGraphContext)
-        state["add_result"] = [runtime.context["a"] + runtime.context["b"]]
+        state["add_result"] = state["a"] + state["b"]
         return state
     @staticmethod
     async def subtract(state:StateSchema) -> StateSchema:
         """Subtract the second number from the first."""
-        runtime = get_runtime(ParallelNodesGraphContext)
-        state["sub_result"] = [runtime.context["a"] - runtime.context["b"]]
+        state["sub_result"] = state["a"] - state["b"]
         return state
     @staticmethod
     async def multiply(state:StateSchema) -> StateSchema:
         """Multiply two numbers together."""
-        runtime = get_runtime(ParallelNodesGraphContext)
-        state["mul_result"] = [runtime.context["a"] * runtime.context["b"]]
+        state["mul_result"] = state["a"] * state["b"]
         return state
     @staticmethod
     async def divide(state:StateSchema) -> StateSchema:
         """Divide the first number by the second."""
-        runtime = get_runtime(ParallelNodesGraphContext)
-        state["div_result"] = [runtime.context["a"] / runtime.context["b"]]
+        state["div_result"] = state["a"] / state["b"]
         return state  # >>> NOTE: zeroDivision unchecked <<<
     @staticmethod
     async def collect(state:StateSchema) -> StateSchema:
         """Format all operation results"""
-        state["final_result"] = [{
+        state["final_result"] = {
                 "addition": state.get("add_result"),
                 "subtraction": state.get("sub_result"),
                 "multiplication": state.get("mul_result"),
                 "division": state.get("div_result")
-            }]
+            }
         return state
     @staticmethod
     async def welcome(state:StateSchema) -> StateSchema:
         """Multiply two numbers together."""
-        runtime = get_runtime(ParallelNodesGraphContext)
-        state["welcome_msg"] = ["HelloO! " + runtime.context["name"].upper()]
+        state["welcome_msg"] = ["HelloO! " + state["name"].upper()]
         return state
+
+class CustomStateGraphBuilder(StateGraph):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    def add_tool_node(self, node:str, action:StateNode):
+        self.add_node(node, ToolNode([action]))
+
+class Retriever(Trace):
+    prompt = hub.pull("rlm/rag-prompt")
+    callback_manager = Optional[BaseCallbackManager]
+    documents = Optional[Document]
+    vector_index = Optional[VectorStoreRetriever]
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=100,
+        chunk_overlap=25,
+        )
+    embedding = OllamaEmbeddings(
+        model="mistral:7b",
+        base_url="http://localhost:11435" # default is 11434
+        )
+
     @staticmethod
-    async def tool_calling_llm(state:StateSchema):
-        runtime = get_runtime(ParallelNodesGraphContext)
-        messages = runtime.context["messages"]
-        messages = messages[0]["content"] + state["division"]
-        response = Node.client_with_tools.invoke(messages)
-        return {"messages": [response]}
-    @staticmethod
-    async def ask_llm(state:StateSchema) -> StateSchema:
-        runtime = get_runtime(ParallelNodesGraphContext)
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": runtime.context["question1"]},
-                ]
-            }
-        ]
-        response = client.chat.completions.create(
-                # model=MODEL,
-                messages=messages,
-                max_tokens=1024,
+    def _create_mythical_creatures_db():
+        return [
+            Document(
+                page_content="""Phoenix - A magnificent bird that cyclically regenerates by bursting into flames upon death and being reborn from the ashes. 
+                Known for its healing tears and ability to be reborn, making it a symbol of renewal and resurrection.""",
+                metadata={"creature_type": "Bird", "origin": "Greek", "magical_ability": "Rebirth"}
+            ),
+            Document(
+                page_content="""Dragon - Majestic, serpentine creatures with the ability to breathe fire. 
+                Often depicted as guardians of great treasures and possessing ancient wisdom.""",
+                metadata={"creature_type": "Reptile", "origin": "Global", "magical_ability": "Fire Breathing"}
+            ),
+            Document(
+                page_content="""Unicorn - A horse-like creature with a single, spiraling horn on its forehead. 
+                Their horns are said to have the power to heal sickness and purify water.""",
+                metadata={"creature_type": "Equine", "origin": "European", "magical_ability": "Healing"}
+            ),
+            Document(
+                page_content="""Kitsune - Japanese fox spirits with intelligence, long life, and magical abilities. 
+                They can shapeshift into human form and are known for their trickery and wisdom.""",
+                metadata={"creature_type": "Canine", "origin": "Japanese", "magical_ability": "Shapeshifting"}
+            ),
+            Document(
+                page_content="""Kraken - A legendary sea monster of enormous size, said to appear off the coasts of Norway and Greenland. 
+                Known to attack ships and drag them to the ocean depths.""",
+                metadata={"creature_type": "Cephalopod", "origin": "Norse", "magical_ability": "Whirlpool Creation"}
             )
-        answer = response.choices[0].message.content
-        state["answer1"] = answer
+        ]
+
+    def __init__(self, logger, populateMetrics, callback_manager) -> None:
+        super().__init__(logger, populateMetrics)
+        self.type = "retriever" # must be same as metric attribute
+        Retriever.llm = OllamaLLM(
+                model="mistral:7b",
+                base_url="http://localhost:11435",
+                callbacks=callback_manager,
+                verbose=True
+                )
+        Retriever.callback_manager = callback_manager
+
+    @staticmethod
+    async def split_documents(state:RetrieverGraphSchema) -> RetrieverGraphSchema:
+        Retriever.documents = Retriever.splitter.split_documents(
+            Retriever._create_mythical_creatures_db()
+            )
+        vector_db = FAISS.from_documents(
+            Retriever.documents,
+            embedding=Retriever.embedding
+            )
+        Retriever.vector_index = vector_db.as_retriever(
+            search_type="mmr",
+            search_kwargs={"k":3}
+            )
         return state
+    @staticmethod
+    async def retrieve_docs(state:RetrieverGraphSchema) -> RetrieverGraphSchema:
+        query = state.get("query")
+        state["retrieved"] = {
+            "query":query,
+            "docs":[doc.to_json() for doc in Retriever.vector_index.invoke(query)]
+            } # NOTE: convert Document -> JSON else serialization error
+        return state
+    @staticmethod
+    async def rag(state:RetrieverGraphSchema) -> RetrieverGraphSchema:
+        joinDocs = lambda docs: "\n".join(
+            [d["kwargs"]["page_content"] for d in state["retrieved"]["docs"]]
+            )
+        rag_chain = (
+            {
+                "context":Retriever.vector_index | joinDocs,
+                "question":RunnablePassthrough()
+                }
+            | Retriever.prompt
+            | Retriever.llm
+            | StrOutputParser()
+            )
+        state["answer"] = await rag_chain.ainvoke(
+            state.get("query"),
+            config={"callbacks": Retriever.callback_manager}
+            )
+        state["retrieved"] = dict() # reset to reduce payload
+        return state    
 
 class Edge:
     def __init__(self) -> None:
         self.nodes = {v.__name__:v.__name__ for (_,v) in Node.__dict__.items()\
          if isinstance(v, staticmethod)}
+        self.nodes = self.nodes | {
+            v.__name__:v.__name__ for (_,v) in Retriever.__dict__.items()\
+                if isinstance(v, staticmethod)
+        }
         self.nodes["END"] = END
         self.nodes["START"] = START
     @staticmethod
     async def is_welcome_needed(state:StateSchema) -> StateSchema:
-        runtime = get_runtime(ParallelNodesGraphContext)
-        return "welcome" if runtime.context.get("name") else END
-    @staticmethod
-    async def is_calulator_tool_needed(state:StateSchema) -> StateSchema:
-        return "tool_calling_llm" if state["principal"] else END
-    @staticmethod
-    async def is_follow_up_needed(state:StateSchema) -> StateSchema:
-        runtime = get_runtime(ParallelNodesGraphContext)
-        return "ask_llm" if runtime.context.get("follow_up") else END
-    @staticmethod
-    def should_continue(m_state:MessagesState):
-        messages = m_state["messages"]
-        last_message = messages[-1]
-        if last_message.tool_calls:
-            return "calculate_interest"
-        return END
+        return "welcome" if state.get("name") else END
     async def __call__(self, edge:str):
         if " --" not in edge:
             start_key, end_key = edge.split(" -> ")
@@ -198,9 +273,3 @@ class Edge:
                 path=self.__getattribute__(path),
                 path_map=[self.nodes[p] for p in path_map]
                 )
-
-class CustomStateGraphBuilder(StateGraph):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-    def add_tool_node(self, node:str, action:StateNode):
-        self.add_node(node, ToolNode([action]))

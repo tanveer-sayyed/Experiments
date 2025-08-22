@@ -16,7 +16,8 @@ from langchain_core.runnables.graph import UUID
 from tenacity import RetryCallState
 from typing import Any, Awaitable, Sequence
 
-from utils import UUIDEncoder
+from utilsCostAndClient import UUIDEncoder, calculateCost, convertSecondsToHMS
+from asyncLogsAndMetrics import Tokens, Duration
 
 class CustomAsyncCallbacks(BaseCallbackHandler):
     """Handles logging of graph execution"""
@@ -46,10 +47,10 @@ class CustomAsyncCallbacks(BaseCallbackHandler):
         tags: list[str] | None = None,
         **kwargs: Any,
         ) -> None:
+        # print(action)
         name = "on_agent_action"
         await self.start_message(name)
         d = dumps({
-            # "action":action,
             "action":dict(action),
             "run_id":run_id,
             "parent_run_id":parent_run_id,
@@ -127,9 +128,11 @@ class CustomAsyncCallbacks(BaseCallbackHandler):
         ) -> None:
         name = "on_chain_start"
         await self.start_message(name)
+        try: inputs = dict(inputs.get("input", inputs))
+        except (ValueError, AttributeError): pass
         d = dumps({
             "serialized":serialized,
-            "inputs":dict(inputs),
+            "inputs":inputs,
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
@@ -192,6 +195,40 @@ class CustomAsyncCallbacks(BaseCallbackHandler):
         ) -> None:
         name = "on_llm_end"
         await self.start_message(name)
+        for generations in response.generations:
+            for generations in generations:
+                for generation in generations: break
+        response = {
+            "text":generations.text,
+            "generation_info":generations.generation_info,
+            'llm_output': response.llm_output,
+            'run': response.run,
+            'type': response.type
+            }
+        model = response["generation_info"]["model"]
+        completion_tokens = response["generation_info"]["eval_count"]
+        prompt_tokens = response["generation_info"]["prompt_eval_count"]
+        cost = calculateCost(model, completion_tokens, prompt_tokens)
+        duration = convertSecondsToHMS(
+            response["generation_info"]["total_duration"]
+            )
+        await self.metric("Metrics.llm.call_order_duration",
+                          Duration(
+                              start_time="--",
+                              end_time="--",
+                              duration=duration
+                            )
+            )
+        await self.metric("Metrics.llm.tokens",
+                          Tokens(
+                              cost=cost,
+                              total_tokens=prompt_tokens+completion_tokens,
+                              prompt_tokens=prompt_tokens,
+                              completion_tokens=completion_tokens
+                              )
+                          )
+        await self.metric("Metrics.llm.model", model)
+        await self.metric("Metrics.llm.generation", response["text"])
         d = dumps({
             "response":response,
             "run_id":run_id,
@@ -210,6 +247,8 @@ class CustomAsyncCallbacks(BaseCallbackHandler):
         **kwargs: Any,
         ) -> None:
         name = "on_llm_error"
+        await self.metric("Metrics.llm.error.where", name)
+        await self.metric("Metrics.llm.error.description", str(error))
         await self.start_message(name)
         d = dumps({
             "error":str(error),
@@ -233,7 +272,7 @@ class CustomAsyncCallbacks(BaseCallbackHandler):
         await self.start_message(name)
         d = dumps({
             "token":token,
-            "chunk":chunk,
+            "chunk":dict(chunk),
             "run_id":run_id,
             "parent_run_id":parent_run_id,
             "tags":tags,
@@ -252,6 +291,8 @@ class CustomAsyncCallbacks(BaseCallbackHandler):
         **kwargs: Any
         ) -> None:
         name = "on_llm_start"
+        await self.metric("Metrics.llm.call_order", "llm invoked")
+        await self.metric("Metrics.llm.prompt", prompts[-1])
         await self.start_message(name)
         d = dumps({
             "serialized":serialized,

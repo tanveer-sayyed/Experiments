@@ -1,21 +1,20 @@
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
-from operator import add as reducer
-from typing import Annotated, List, Optional, TypedDict, Union
+from typing import Annotated, Dict, List, Union
+from typing_extensions import TypedDict
 
 class StateSchema(TypedDict):
-    name:Annotated[list, reducer]
-    welcome_msg:Annotated[list, reducer]
-    add_result:Annotated[list, reducer]
-    sub_result:Annotated[list, reducer]
-    mul_result:Annotated[list, reducer]
-    div_result:Annotated[list, reducer]
-    final_result:Annotated[list, reducer]
-    messages: Annotated[List[Union[HumanMessage, AIMessage, ToolMessage]], reducer]
+    a:Annotated[int, lambda x, y: y]
+    b:Annotated[int, lambda x, y: y]
+    name:Annotated[str, lambda x, y: y]
+    welcome_msg:Annotated[str, lambda x, y: y]
+    add_result:Annotated[float, lambda x, y: x or y]
+    sub_result:Annotated[float, lambda x, y: x or y]
+    mul_result:Annotated[float, lambda x, y: x or y]
+    div_result:Annotated[float, lambda x, y: x or y]
+    final_result:Annotated[dict, lambda x, y: y|x]
+    messages: Annotated[List[Union[HumanMessage, AIMessage, ToolMessage]], lambda x, y: x + y]
 
-class ParallelNodesGraphContext(TypedDict):
-    a:int
-    b:int
-    name:Optional[str]
-
-class ReactToolGraphContext(TypedDict):
-    message:HumanMessage
+class RetrieverGraphSchema(TypedDict):
+    query:HumanMessage
+    answer:AIMessage
+    retrieved:List[Union[str,Dict[str,str]]]

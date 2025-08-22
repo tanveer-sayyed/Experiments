@@ -1,0 +1,143 @@
+READY
+2025-08-22 11:30:59.312544 : [START] : on_chain_start
+2025-08-22 11:30:59.314097 : [END]   : on_chain_start
+{
+  "serialized": null,
+  "inputs": {
+    "a": 20,
+    "b": 8,
+    "name": "Alan",
+    "welcome_msg": "",
+    "add_result": 0.0,
+    "div_result": 0.0,
+    "mul_result": 0.0,
+    "sub_result": 0.0,
+    "final_result": {}
+  },
+  "run_id": "0cb00498-20d0-42a2-aa9b-5ecd5474f484",
+  "parent_run_id": null,
+  "tags": [],
+  "metadata": {}
+}
+2025-08-22 11:30:59.322568 : [START] : Node.add
+2025-08-22 11:30:59.324319 : [START] : Node.divide
+2025-08-22 11:30:59.325700 : [START] : Node.multiply
+2025-08-22 11:30:59.327618 : [START] : Node.subtract
+2025-08-22 11:30:59.330188 : [END]   : Node.add
+{
+  "a": 20,
+  "b": 8,
+  "name": "Alan",
+  "welcome_msg": "",
+  "add_result": 28,
+  "sub_result": 0.0,
+  "mul_result": 0.0,
+  "div_result": 0.0,
+  "final_result": {},
+  "messages": []
+}
+2025-08-22 11:30:59.332438 : [END]   : Node.divide
+{
+  "a": 20,
+  "b": 8,
+  "name": "Alan",
+  "welcome_msg": "",
+  "add_result": 0.0,
+  "sub_result": 0.0,
+  "mul_result": 0.0,
+  "div_result": 2.5,
+  "final_result": {},
+  "messages": []
+}
+2025-08-22 11:30:59.334278 : [END]   : Node.multiply
+{
+  "a": 20,
+  "b": 8,
+  "name": "Alan",
+  "welcome_msg": "",
+  "add_result": 0.0,
+  "sub_result": 0.0,
+  "mul_result": 160,
+  "div_result": 0.0,
+  "final_result": {},
+  "messages": []
+}
+2025-08-22 11:30:59.335785 : [END]   : Node.subtract
+{
+  "a": 20,
+  "b": 8,
+  "name": "Alan",
+  "welcome_msg": "",
+  "add_result": 0.0,
+  "sub_result": 12,
+  "mul_result": 0.0,
+  "div_result": 0.0,
+  "final_result": {},
+  "messages": []
+}
+2025-08-22 11:30:59.339191 : [START] : Node.collect
+2025-08-22 11:30:59.340735 : [END]   : Node.collect
+{
+  "a": 20,
+  "b": 8,
+  "name": "Alan",
+  "welcome_msg": "",
+  "add_result": 28,
+  "sub_result": 12,
+  "mul_result": 160,
+  "div_result": 2.5,
+  "final_result": {
+    "addition": 28,
+    "subtraction": 12,
+    "multiplication": 160,
+    "division": 2.5
+  },
+  "messages": []
+}
+2025-08-22 11:30:59.344364 : [START] : Node.welcome
+2025-08-22 11:30:59.345695 : [END]   : Node.welcome
+{
+  "a": 20,
+  "b": 8,
+  "name": "Alan",
+  "welcome_msg": [
+    "HelloO! ALAN"
+  ],
+  "add_result": 28,
+  "sub_result": 12,
+  "mul_result": 160,
+  "div_result": 2.5,
+  "final_result": {
+    "addition": 28,
+    "subtraction": 12,
+    "multiplication": 160,
+    "division": 2.5
+  },
+  "messages": []
+}
+2025-08-22 11:30:59.358430 : [START] : on_chain_end
+2025-08-22 11:30:59.359266 : [END]   : on_chain_end
+{
+  "outputs": {
+    "a": 20,
+    "b": 8,
+    "name": "Alan",
+    "welcome_msg": [
+      "HelloO! ALAN"
+    ],
+    "add_result": 28,
+    "sub_result": 12,
+    "mul_result": 160,
+    "div_result": 2.5,
+    "final_result": {
+      "addition": 28,
+      "subtraction": 12,
+      "multiplication": 160,
+      "division": 2.5
+    },
+    "messages": []
+  },
+  "run_id": "0cb00498-20d0-42a2-aa9b-5ecd5474f484",
+  "parent_run_id": null,
+  "tags": []
+}

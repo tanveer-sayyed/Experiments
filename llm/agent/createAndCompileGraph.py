@@ -1,10 +1,7 @@
 from langchain import hub
-from langchain_core.callbacks.manager import AsyncCallbackManager
-from langchain_core.tools import tool
-# from langchain.agents import AgentExecutor, create_react_agent
+from langchain_core.callbacks.manager import BaseCallbackManager
 from pprint import pprint
-from langchain.agents import create_react_agent, initialize_agent, AgentType
-from langchain.agents.agent import AgentExecutor
+from langchain.agents import initialize_agent, AgentType
 
 from asyncLogsAndMetrics import monitor
 from callbackHandler import CustomAsyncCallbacks
@@ -12,22 +9,22 @@ from nodesToolsEdgesGraph import (
     CustomStateGraphBuilder,
     Node,
     Edge,
-    Tool
+    Tool,
+    Retriever
     )
 from stateAndContextSchema import (
-    ParallelNodesGraphContext,
-    ReactToolGraphContext,
+    RetrieverGraphSchema,
     StateSchema,
     )
-from utils import prettyPrintMetrics, client, convertToBaseTool
+from utilsCostAndClient import prettyPrintMetrics, client, convertToBaseTool
 
-async def parallelNodesGraph(thread_id:str, context:ParallelNodesGraphContext):
+async def parallelNodesGraph(thread_id:str, context:dict):
     try:
         logger, populateMetrics, metric = await monitor(thread_id)
         metric.user.thread_id = thread_id
         node = Node(logger=logger, populateMetrics=populateMetrics)
         edge = Edge()
-        callback_manager = AsyncCallbackManager(
+        callback_manager = BaseCallbackManager(
             handlers=[
                 CustomAsyncCallbacks(
                     logger=logger,
@@ -36,8 +33,7 @@ async def parallelNodesGraph(thread_id:str, context:ParallelNodesGraphContext):
                 ]
             )
         builder = CustomStateGraphBuilder(
-            state_schema=StateSchema,
-            context_schema=ParallelNodesGraphContext
+            state_schema=StateSchema
             )
         # add node
         builder.add_node(**(await node("add")))
@@ -61,16 +57,17 @@ async def parallelNodesGraph(thread_id:str, context:ParallelNodesGraphContext):
         builder.add_edge(**(await edge("collect -> END")))
         builder.add_edge(**(await edge("welcome -> END")))
         graph = builder.compile()
-
-        # ready to invoke
-        state:StateSchema = dict(
-            name=list(),
-            welcome_msg=list(),
-            add_result=list(),
-            div_result=list(),
-            mul_result=list(),
-            sub_result=list(),
-            final_result=list()
+        #
+        state = StateSchema(
+            a=context["a"],
+            b=context["b"],
+            name=context["name"],
+            welcome_msg=str(),
+            add_result=float(),
+            div_result=float(),
+            mul_result=float(),
+            sub_result=float(),
+            final_result=dict()
             )
         result = await graph.ainvoke(
                     state,
@@ -86,7 +83,7 @@ async def parallelNodesGraph(thread_id:str, context:ParallelNodesGraphContext):
             prettyPrintMetrics(metric)
         except: pass
 
-async def reactToolGraph(thread_id:str, context:ReactToolGraphContext):
+async def reactToolGraph(thread_id:str, context:dict):
     try:
         logger, populateMetrics, metric = await monitor(thread_id)
         metric.user.thread_id = thread_id
@@ -94,7 +91,6 @@ async def reactToolGraph(thread_id:str, context:ReactToolGraphContext):
         prompt = hub.pull("hwchase17/react")
         tools = [t.add, t.divide, t.multiply, t.divide]
         tools = [convertToBaseTool(func, t.trace) for func in tools]
-        # -- implementation-1
         agent = initialize_agent(
             verbose=True,
             tools=tools,
@@ -106,22 +102,7 @@ async def reactToolGraph(thread_id:str, context:ReactToolGraphContext):
                 )],
         )
         result = await agent.ainvoke(prompt)
-        result = await agent.ainvoke({"input": context['message'].content})
-        # -- implementation-2
-        # llm_with_tools = client.bind_tools(tools)
-        # agent = create_react_agent(llm_with_tools, tools, prompt)
-        # agent_executor = AgentExecutor(
-        #     agent=agent,
-        #     tools=tools,
-        #     verbose=True,
-        #     callbacks=[CustomAsyncCallbacks(
-        #         logger=logger,
-        #         populateMetrics=populateMetrics
-        #         )],
-        #     # handle_parsing_errors=True
-        # )
-        # result = await agent_executor.ainvoke(
-        #     {"input": f"Use the tools provided to calculate the following arithmetic expression: {context['message'].content}"})
+        result = await agent.ainvoke({"input": context["message"].content})
         return result
     except: raise
     finally:
@@ -129,3 +110,53 @@ async def reactToolGraph(thread_id:str, context:ReactToolGraphContext):
             pprint(metric)
             prettyPrintMetrics(metric)
         except: pass
+
+async def retrievalGraph(thread_id:str, context:dict):
+    try:
+        edge = Edge()
+        logger, populateMetrics, metric = await monitor(thread_id)
+        metric.user.thread_id = thread_id
+        callback_manager = BaseCallbackManager(
+            handlers=[
+                CustomAsyncCallbacks(
+                    logger=logger,
+                    populateMetrics=populateMetrics
+                    )
+                ]
+            )
+        retriever = Retriever(
+            logger=logger,
+            populateMetrics=populateMetrics,
+            callback_manager=callback_manager
+            )
+        builder = CustomStateGraphBuilder(
+            state_schema=RetrieverGraphSchema,
+            )
+        builder.add_node(**(await retriever("split_documents")))
+        builder.add_node(**(await retriever("retrieve_docs")))
+        builder.add_node(**(await retriever("rag")))
+        #
+        builder.add_edge(**(await edge("START -> split_documents")))
+        builder.add_edge(**(await edge("split_documents -> retrieve_docs")))
+        builder.add_edge(**(await edge("retrieve_docs -> rag")))
+        builder.add_edge(**(await edge("rag -> END")))
+        graph = builder.compile()
+        state:RetrieverGraphSchema = dict(
+            answer=str(),
+            query=context["query"].content,
+            retrieved=dict()
+            )
+        result = await graph.ainvoke(
+                    state,
+                    verbose=True,
+                    config={"callbacks": callback_manager}
+                    )
+        return result
+    except: raise
+    finally:
+        try:
+            pprint(metric)
+            prettyPrintMetrics(metric)
+        except Exception as e:
+            print(e)
+            pass
