@@ -4,15 +4,13 @@ from langchain_community.vectorstores import FAISS
 from langchain_core.callbacks.base import BaseCallbackManager
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.load import load
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.vectorstores.base import VectorStoreRetriever
 from langchain_ollama import OllamaLLM
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langgraph.graph import END, START, MessagesState, StateGraph
+from langgraph.graph import END, START, StateGraph
 from langgraph.graph._node import StateNode
 from langgraph.prebuilt import ToolNode
-from langgraph.runtime import Runtime, get_runtime
 
 from typing import Optional
 
@@ -23,7 +21,7 @@ from utilsCostAndClient import client
 class Tool(Trace):
     def __init__(self, logger, populateMetrics) -> None:
         super().__init__(logger, populateMetrics)
-        self.type = "tool" # must be same as metric attribute
+        self.type = "tool"
     @staticmethod
     async def calculate_interest(state:StateSchema) -> StateSchema:
         """calclulates the interest given the principal"""
@@ -102,7 +100,7 @@ class Node(Trace):
 
     def __init__(self, logger, populateMetrics) -> None:
         super().__init__(logger, populateMetrics)
-        self.type = "node" # must be same as metric attribute
+        self.type = "node"
 
     @staticmethod
     async def add(state:StateSchema) -> StateSchema:
@@ -192,7 +190,7 @@ class Retriever(Trace):
 
     def __init__(self, logger, populateMetrics, callback_manager) -> None:
         super().__init__(logger, populateMetrics)
-        self.type = "retriever" # must be same as metric attribute
+        self.type = "retriever"
         Retriever.llm = OllamaLLM(
                 model="mistral:7b",
                 base_url="http://localhost:11435",

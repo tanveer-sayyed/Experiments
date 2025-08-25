@@ -1,6 +1,8 @@
 """
     https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.base.AsyncCallbackHandler.html#langchain_core.callbacks.base.AsyncCallbackHandler
     https://langchain-ai.github.io/langgraph/how-tos/tool-calling/#llm-provider-tools
+    https://docs.langchain.com/langgraph-platform/deploy-standalone-server
+    https://docs.langchain.com/langgraph-platform/application-structure
 """
 
 from json import dumps
@@ -12,7 +14,6 @@ from langchain_core.outputs.chat_generation import ChatGenerationChunk
 from langchain_core.outputs.generation import GenerationChunk
 from langchain_core.outputs.llm_result import LLMResult
 from langchain_core.runnables.graph import UUID
-# from langchain.load.dump import dumps as l_dumps
 from tenacity import RetryCallState
 from typing import Any, Awaitable, Sequence
 
@@ -47,7 +48,6 @@ class CustomAsyncCallbacks(BaseCallbackHandler):
         tags: list[str] | None = None,
         **kwargs: Any,
         ) -> None:
-        # print(action)
         name = "on_agent_action"
         await self.start_message(name)
         d = dumps({

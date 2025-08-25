@@ -5,9 +5,9 @@ from langchain_core.runnables.graph import UUID
 # from langchain_openai import ChatOpenAI
 # from os import getenv
 from pandas import DataFrame
+from pprint import pformat
 from langchain_ollama import ChatOllama #langchain_core-0.3.74
 from typing import Any, Awaitable, Type
-from pprint import pprint
 from pydantic import BaseModel, Field, create_model
 from inspect import signature
 from langchain_core.tools import BaseTool
@@ -41,42 +41,59 @@ def calculateCost(model, completion_tokens, prompt_tokens):
     elif 'ada' in model:
         return total_tokens * 0.0004 / 1000
     else: return 0.0
-    
+
 def convertSecondsToHMS(total_seconds):
     minutes, seconds = divmod(total_seconds, 60)
     hours, minutes = divmod(minutes, 60)
     return f"{hours:02}:{minutes:02}:{seconds:06}"
 
 def prettyPrintMetrics(metrics:dataclass):
+    def save(df:DataFrame, path:str) -> None:
+        if not df.empty: temp.to_csv(path, index=False)
     print(f"\n{'*'*100}\nMETRIC ::")
-    for attr in metrics.__dict__:
-        print(f"\n\t{'='*len(attr)}\n\t{attr}\n\t{'='*len(attr)}")
-        attr = metrics.__dict__[attr]
+    thread_id = metrics.user.thread_id
+    for attr_ in metrics.__dict__:
+        print(f"\n\t{'='*12}\n\t{attr_}\n\t{'='*12}")
+        attr = metrics.__dict__[attr_]
         for k in attr.__dict__:
             if k not in ["call_order","call_order_duration","tokens"]:
-                if k == "docs":
-                    print(f"{k} : " + pprint.pformat(attr.__dict__[k]))
+                if k == "docs": print(f"{k} : " + pformat(attr.__dict__[k]))
                 else: print(f"{k} : {attr.__dict__[k]}")
         if "call_order" in attr.__dict__:
             print("calls : ")
-            print(DataFrame({
+            temp = DataFrame({
                 "call_order":attr.call_order,
                 "duration":[x.duration for x in attr.call_order_duration],
                 "start_time":[x.start_time for x in attr.call_order_duration],
                 "end_time":[x.end_time for x in attr.call_order_duration],
-                }).to_markdown())
+                })
+            print(temp.to_markdown())
+            save(temp, f"logs/{thread_id}_{attr_}_call_order.csv")
+        if "query" in attr.__dict__:
+            print("retrieval : ")
+            temp = DataFrame({
+                "query":attr.query,
+                "num_docs":attr.num_docs,
+                "docs":[pformat(d) for d in attr.docs],
+                })
+            print(temp.to_markdown())
+            save(temp, f"logs/{thread_id}_{attr_}_call_order.csv")
         if "tokens" in attr.__dict__:
             print("tokens : ")
-            print(DataFrame({
+            temp = DataFrame({
                 "call_order":attr.call_order,
                 "model":attr.model,
                 "cost":[round(x.cost,6) for x in attr.tokens],
                 "total_tokens":[x.total_tokens for x in attr.tokens],
                 "prompt_tokens":[x.prompt_tokens for x in attr.tokens],
                 "completion_tokens":[x.completion_tokens for x in attr.tokens],
-                "prompts":attr.prompt,
-                "generations":attr.generation
-                }).to_markdown())
+                "prompts":[f"{p:<20}" for p in attr.prompt],
+                "generations":[f"{g:<20}" for g in attr.generation]
+                })
+            print(temp.to_markdown())
+            save(temp, f"logs/{thread_id}_{attr_}_tokens.csv")
+        with open(f"logs/{thread_id}_all_metric.log","w") as f:
+            f.write(pformat(metrics))
 
 def convertToBaseTool(func:Awaitable, trace:Awaitable) -> BaseTool:
     tool_name = func.__name__

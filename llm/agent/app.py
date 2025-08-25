@@ -1,6 +1,9 @@
 """
     python 3.10
     numpy==1.26.4
+    
+    https://docs.langchain.com/langgraph-platform/deploy-standalone-server
+    https://docs.langchain.com/langgraph-platform/application-structure
 """
 
 
@@ -60,13 +63,12 @@ async def _main3():
 
 async def main():
     try:
-        # await _main1()
+        await _main1()
         # await _main2()
-        await _main3()
+        # await _main3()
     except Exception as e:
         raise e                       # for debug
         # print("some error occured") # for prod
 
 # await main()
-run(main())
-
+# run(main())

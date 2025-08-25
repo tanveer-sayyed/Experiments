@@ -57,7 +57,6 @@ class RetrieverMetrics:
     docs:List[DocumentMetrics] = field(init=False)
     def __post_init__(self):
         self.docs = list()
-        self.document_metrics = list()
         self.call_order_duration = list()
 
 @dataclass
@@ -112,7 +111,3 @@ async def monitor(file_name:str) -> Tuple[Awaitable, Awaitable, Metrics]:
                 metrics.__setattr__(position[i], levels[i])
             except Exception as e: print("@METRIC", e)
     return logger, populateMetrics, metrics
-
-# from pprint import pprint
-# metrics = Metrics()
-# pprint(Metrics())

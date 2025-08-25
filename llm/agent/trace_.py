@@ -20,15 +20,14 @@ class Trace:
         if not retrieved: return None
         await self.metric(f"Metrics.{self.type}.query", retrieved["query"])
         await self.metric(f"Metrics.{self.type}.num_docs", len(retrieved["docs"]))
+        docs = list()
         for doc in retrieved["docs"]:
             doc = doc["kwargs"]
-            await self.metric(
-                f"Metrics.{self.type}.docs",
-                DocumentMetrics(
+            docs.append(DocumentMetrics(
                     content=f"{doc['page_content'][:10]} ... {doc['page_content'][-10:]}",
-                    metadata=doc["metadata"],
-                    )
-                )
+                    metadata=doc["metadata"]
+                    ))
+        await self.metric(f"Metrics.{self.type}.docs", docs)
 
     def trace(self, func:Awaitable) -> Awaitable:
         async def inner(*args, **kwargs):

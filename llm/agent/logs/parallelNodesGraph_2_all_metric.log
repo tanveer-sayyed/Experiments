@@ -1,0 +1,53 @@
+Metrics(user=UserInfo(name='', thread_id='parallelNodesGraph_2', session_id=''),
+        node=NodeMetrics(call_order=['Node.add',
+                                     'Node.divide',
+                                     'Node.multiply',
+                                     'Node.subtract',
+                                     'Node.collect',
+                                     'Node.welcome'],
+                         call_order_duration=[Duration(start_time='2025-08-25 '
+                                                                  '21:40:42.754890',
+                                                       end_time='2025-08-25 '
+                                                                '21:40:42.754890',
+                                                       duration='0:00:00.000016'),
+                                              Duration(start_time='2025-08-25 '
+                                                                  '21:40:42.755012',
+                                                       end_time='2025-08-25 '
+                                                                '21:40:42.755012',
+                                                       duration='0:00:00.000012'),
+                                              Duration(start_time='2025-08-25 '
+                                                                  '21:40:42.755128',
+                                                       end_time='2025-08-25 '
+                                                                '21:40:42.755128',
+                                                       duration='0:00:00.000010'),
+                                              Duration(start_time='2025-08-25 '
+                                                                  '21:40:42.755216',
+                                                       end_time='2025-08-25 '
+                                                                '21:40:42.755216',
+                                                       duration='0:00:00.000010'),
+                                              Duration(start_time='2025-08-25 '
+                                                                  '21:40:42.764815',
+                                                       end_time='2025-08-25 '
+                                                                '21:40:42.764815',
+                                                       duration='0:00:00.000008'),
+                                              Duration(start_time='2025-08-25 '
+                                                                  '21:40:42.768701',
+                                                       end_time='2025-08-25 '
+                                                                '21:40:42.768701',
+                                                       duration='0:00:00.000009')],
+                         error=Error(where='', description='')),
+        llm=LlmMetrics(model=[],
+                       prompt=[],
+                       generation=[],
+                       call_order=[],
+                       tokens=[],
+                       error=Error(where='', description='')),
+        tool=ToolMetrics(call_order=[],
+                         call_order_duration=[],
+                         error=Error(where='', description='')),
+        retriever=RetrieverMetrics(query=[],
+                                   num_docs=[],
+                                   call_order=[],
+                                   call_order_duration=[],
+                                   error=Error(where='', description=''),
+                                   docs=[]))
