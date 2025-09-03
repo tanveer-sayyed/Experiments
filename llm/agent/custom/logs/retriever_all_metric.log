@@ -1,0 +1,74 @@
+Metrics(user=UserInfo(name='', thread_id='retriever', session_id=''),
+        node=NodeMetrics(call_order=[],
+                         call_order_duration=[],
+                         error=Error(where='', description='')),
+        llm=LlmMetrics(model=['mistral:7b'],
+                       prompt=['Human: You are an assistant for '
+                               'question-answering tasks. Use the following '
+                               'pieces of retrieved context to answer the '
+                               "question. If you don't know the answer, just "
+                               "say that you don't know. Use three sentences "
+                               'maximum and keep the answer concise.\n'
+                               'Question: Find creatures that can heal \n'
+                               'Context: flames upon death and being reborn '
+                               'from the ashes.\n'
+                               'Kraken - A legendary sea monster of enormous '
+                               'size, said to appear off the coasts of Norway '
+                               'and\n'
+                               'Phoenix - A magnificent bird that cyclically '
+                               'regenerates by bursting into flames upon death '
+                               'and \n'
+                               'Answer:'],
+                       generation=[' The creatures that can heal are the '
+                                   'Phoenix. Upon dying, it bursts into flames '
+                                   'and is reborn from the ashes, signifying a '
+                                   'form of healing or rebirth.'],
+                       call_order=['llm invoked'],
+                       tokens=[Tokens(cost=0.0,
+                                      total_tokens=171,
+                                      prompt_tokens=134,
+                                      completion_tokens=37)],
+                       error=Error(where='', description='')),
+        tool=ToolMetrics(call_order=[],
+                         call_order_duration=[],
+                         error=Error(where='', description='')),
+        retriever=RetrieverMetrics(query=['Find creatures that can heal'],
+                                   num_docs=[3],
+                                   call_order=['Retriever.split_documents',
+                                               'Retriever.retrieve_docs',
+                                               'Retriever.rag'],
+                                   call_order_duration=[Duration(start_time='2025-08-29 '
+                                                                            '12:54:41.263631',
+                                                                 end_time='2025-08-29 '
+                                                                          '12:54:41.263631',
+                                                                 duration='0:00:02.693813'),
+                                                        Duration(start_time='2025-08-29 '
+                                                                            '12:54:43.959806',
+                                                                 end_time='2025-08-29 '
+                                                                          '12:54:43.959806',
+                                                                 duration='0:00:00.186035'),
+                                                        Duration(start_time='2025-08-29 '
+                                                                            '12:54:44.148415',
+                                                                 end_time='2025-08-29 '
+                                                                          '12:54:44.148415',
+                                                                 duration='0:00:05.855172')],
+                                   error=Error(where='', description=''),
+                                   docs=[[DocumentMetrics(content='flames upo '
+                                                                  '... the '
+                                                                  'ashes.',
+                                                          metadata={'creature_type': 'Bird',
+                                                                    'magical_ability': 'Rebirth',
+                                                                    'origin': 'Greek'}),
+                                          DocumentMetrics(content='Kraken - A '
+                                                                  '... Norway '
+                                                                  'and',
+                                                          metadata={'creature_type': 'Cephalopod',
+                                                                    'magical_ability': 'Whirlpool '
+                                                                                       'Creation',
+                                                                    'origin': 'Norse'}),
+                                          DocumentMetrics(content='Phoenix -  '
+                                                                  '...  death '
+                                                                  'and',
+                                                          metadata={'creature_type': 'Bird',
+                                                                    'magical_ability': 'Rebirth',
+                                                                    'origin': 'Greek'})]]))

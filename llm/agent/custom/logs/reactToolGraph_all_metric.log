@@ -1,0 +1,28 @@
+Metrics(user=UserInfo(name='', thread_id='reactToolGraph', session_id=''),
+        node=NodeMetrics(call_order=[],
+                         call_order_duration=[],
+                         error=Error(where='', description='')),
+        llm=LlmMetrics(model=[],
+                       prompt=[],
+                       generation=[],
+                       call_order=[],
+                       tokens=[],
+                       error=Error(where='', description='')),
+        tool=ToolMetrics(call_order=['Tool.add', 'Tool.multiply'],
+                         call_order_duration=[Duration(start_time='2025-08-29 '
+                                                                  '12:52:37.213323',
+                                                       end_time='2025-08-29 '
+                                                                '12:52:37.213323',
+                                                       duration='0:00:00.000007'),
+                                              Duration(start_time='2025-08-29 '
+                                                                  '12:52:56.188658',
+                                                       end_time='2025-08-29 '
+                                                                '12:52:56.188658',
+                                                       duration='0:00:00.000006')],
+                         error=Error(where='', description='')),
+        retriever=RetrieverMetrics(query=[],
+                                   num_docs=[],
+                                   call_order=[],
+                                   call_order_duration=[],
+                                   error=Error(where='', description=''),
+                                   docs=[]))

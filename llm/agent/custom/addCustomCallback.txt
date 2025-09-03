@@ -1,0 +1,17 @@
+# Add this method to your CustomAsyncCallbacks class
+async def on_custom_event(
+    self,
+    event_name: str,
+    event_data: dict,
+    *,
+    run_id: UUID,
+    parent_run_id: UUID | None = None,
+    tags: list[str] | None = None,
+    metadata: dict[str, Any] | None = None,
+    **kwargs: Any
+) -> None:
+    ...
+
+# In your code where you want to trigger the event
+if hasattr(callback_handler, 'on_custom_event'):
+    await callback_handler.on_custom_event(...)

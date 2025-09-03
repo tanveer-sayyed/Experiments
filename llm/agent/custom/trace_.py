@@ -64,3 +64,5 @@ class Trace:
             node=node,
             action=self.trace(self.__getattribute__(node))
             )
+
+ 

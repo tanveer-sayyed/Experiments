@@ -1,0 +1,1099 @@
+READY
+2025-08-29 12:54:41.260758 : [START] : on_chain_start
+2025-08-29 12:54:41.261508 : [END]   : on_chain_start
+{
+  "serialized": null,
+  "inputs": {
+    "answer": "",
+    "query": "Find creatures that can heal",
+    "retrieved": {}
+  },
+  "run_id": "be615abc-247f-4f80-824a-a07e915eff47",
+  "parent_run_id": null,
+  "tags": [],
+  "metadata": {}
+}
+2025-08-29 12:54:41.263196 : [START] : Retriever.split_documents
+2025-08-29 12:54:43.957948 : [END]   : Retriever.split_documents
+{
+  "query": "Find creatures that can heal",
+  "answer": "",
+  "retrieved": {}
+}
+2025-08-29 12:54:43.959463 : [START] : Retriever.retrieve_docs
+2025-08-29 12:54:44.146635 : [END]   : Retriever.retrieve_docs
+{
+  "query": "Find creatures that can heal",
+  "answer": "",
+  "retrieved": {
+    "query": "Find creatures that can heal",
+    "docs": [
+      {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "document",
+          "Document"
+        ],
+        "kwargs": {
+          "id": "de6749a1-01f8-4204-b78a-70be3f6f91ae",
+          "metadata": {
+            "creature_type": "Bird",
+            "origin": "Greek",
+            "magical_ability": "Rebirth"
+          },
+          "page_content": "flames upon death and being reborn from the ashes.",
+          "type": "Document"
+        }
+      },
+      {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "document",
+          "Document"
+        ],
+        "kwargs": {
+          "id": "681f2085-1682-47d6-b08e-49fe490b3392",
+          "metadata": {
+            "creature_type": "Cephalopod",
+            "origin": "Norse",
+            "magical_ability": "Whirlpool Creation"
+          },
+          "page_content": "Kraken - A legendary sea monster of enormous size, said to appear off the coasts of Norway and",
+          "type": "Document"
+        }
+      },
+      {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "document",
+          "Document"
+        ],
+        "kwargs": {
+          "id": "77123bfd-8f76-4d51-b3a3-c7d0c28ddf49",
+          "metadata": {
+            "creature_type": "Bird",
+            "origin": "Greek",
+            "magical_ability": "Rebirth"
+          },
+          "page_content": "Phoenix - A magnificent bird that cyclically regenerates by bursting into flames upon death and",
+          "type": "Document"
+        }
+      }
+    ]
+  }
+}
+2025-08-29 12:54:44.148145 : [START] : Retriever.rag
+2025-08-29 12:54:44.154816 : [START] : on_chain_start
+2025-08-29 12:54:44.155406 : [END]   : on_chain_start
+{
+  "serialized": null,
+  "inputs": "Find creatures that can heal",
+  "run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "parent_run_id": null,
+  "tags": [],
+  "metadata": {}
+}
+2025-08-29 12:54:44.346539 : [START] : on_llm_start
+2025-08-29 12:54:44.347678 : [END]   : on_llm_start
+{
+  "serialized": {
+    "lc": 1,
+    "type": "not_implemented",
+    "id": [
+      "langchain_ollama",
+      "llms",
+      "OllamaLLM"
+    ],
+    "repr": "OllamaLLM(callbacks=<langchain_core.callbacks.base.BaseCallbackManager object at 0x7f9985573a60>, model='mistral:7b', base_url='http://localhost:11435')",
+    "name": "OllamaLLM"
+  },
+  "prompts": [
+    "Human: You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.\nQuestion: Find creatures that can heal \nContext: flames upon death and being reborn from the ashes.\nKraken - A legendary sea monster of enormous size, said to appear off the coasts of Norway and\nPhoenix - A magnificent bird that cyclically regenerates by bursting into flames upon death and \nAnswer:"
+  ],
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "metadata": {
+    "ls_provider": "ollama",
+    "ls_model_type": "llm",
+    "ls_model_name": "mistral:7b"
+  },
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:44.813920 : [START] : on_llm_new_token
+2025-08-29 12:54:44.815040 : [END]   : on_llm_new_token
+{
+  "token": " The",
+  "chunk": {
+    "text": " The",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:44.956004 : [START] : on_llm_new_token
+2025-08-29 12:54:44.957177 : [END]   : on_llm_new_token
+{
+  "token": " creatures",
+  "chunk": {
+    "text": " creatures",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:45.099565 : [START] : on_llm_new_token
+2025-08-29 12:54:45.100655 : [END]   : on_llm_new_token
+{
+  "token": " that",
+  "chunk": {
+    "text": " that",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:45.243698 : [START] : on_llm_new_token
+2025-08-29 12:54:45.245059 : [END]   : on_llm_new_token
+{
+  "token": " can",
+  "chunk": {
+    "text": " can",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:45.387833 : [START] : on_llm_new_token
+2025-08-29 12:54:45.388846 : [END]   : on_llm_new_token
+{
+  "token": " heal",
+  "chunk": {
+    "text": " heal",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:45.532144 : [START] : on_llm_new_token
+2025-08-29 12:54:45.533182 : [END]   : on_llm_new_token
+{
+  "token": " are",
+  "chunk": {
+    "text": " are",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:45.675872 : [START] : on_llm_new_token
+2025-08-29 12:54:45.677017 : [END]   : on_llm_new_token
+{
+  "token": " the",
+  "chunk": {
+    "text": " the",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:45.819911 : [START] : on_llm_new_token
+2025-08-29 12:54:45.821296 : [END]   : on_llm_new_token
+{
+  "token": " Phoenix",
+  "chunk": {
+    "text": " Phoenix",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:45.963936 : [START] : on_llm_new_token
+2025-08-29 12:54:45.965186 : [END]   : on_llm_new_token
+{
+  "token": ".",
+  "chunk": {
+    "text": ".",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:46.108033 : [START] : on_llm_new_token
+2025-08-29 12:54:46.109157 : [END]   : on_llm_new_token
+{
+  "token": " Upon",
+  "chunk": {
+    "text": " Upon",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:46.251794 : [START] : on_llm_new_token
+2025-08-29 12:54:46.252768 : [END]   : on_llm_new_token
+{
+  "token": " dying",
+  "chunk": {
+    "text": " dying",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:46.395848 : [START] : on_llm_new_token
+2025-08-29 12:54:46.397133 : [END]   : on_llm_new_token
+{
+  "token": ",",
+  "chunk": {
+    "text": ",",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:46.539993 : [START] : on_llm_new_token
+2025-08-29 12:54:46.541089 : [END]   : on_llm_new_token
+{
+  "token": " it",
+  "chunk": {
+    "text": " it",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:46.684098 : [START] : on_llm_new_token
+2025-08-29 12:54:46.685330 : [END]   : on_llm_new_token
+{
+  "token": " burst",
+  "chunk": {
+    "text": " burst",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:46.827899 : [START] : on_llm_new_token
+2025-08-29 12:54:46.829148 : [END]   : on_llm_new_token
+{
+  "token": "s",
+  "chunk": {
+    "text": "s",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:46.971940 : [START] : on_llm_new_token
+2025-08-29 12:54:46.973146 : [END]   : on_llm_new_token
+{
+  "token": " into",
+  "chunk": {
+    "text": " into",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:47.116193 : [START] : on_llm_new_token
+2025-08-29 12:54:47.117388 : [END]   : on_llm_new_token
+{
+  "token": " flames",
+  "chunk": {
+    "text": " flames",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:47.260078 : [START] : on_llm_new_token
+2025-08-29 12:54:47.261198 : [END]   : on_llm_new_token
+{
+  "token": " and",
+  "chunk": {
+    "text": " and",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:47.404117 : [START] : on_llm_new_token
+2025-08-29 12:54:47.405180 : [END]   : on_llm_new_token
+{
+  "token": " is",
+  "chunk": {
+    "text": " is",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:47.548076 : [START] : on_llm_new_token
+2025-08-29 12:54:47.549141 : [END]   : on_llm_new_token
+{
+  "token": " re",
+  "chunk": {
+    "text": " re",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:47.692116 : [START] : on_llm_new_token
+2025-08-29 12:54:47.693209 : [END]   : on_llm_new_token
+{
+  "token": "born",
+  "chunk": {
+    "text": "born",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:47.836296 : [START] : on_llm_new_token
+2025-08-29 12:54:47.837441 : [END]   : on_llm_new_token
+{
+  "token": " from",
+  "chunk": {
+    "text": " from",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:47.980198 : [START] : on_llm_new_token
+2025-08-29 12:54:47.981448 : [END]   : on_llm_new_token
+{
+  "token": " the",
+  "chunk": {
+    "text": " the",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:48.124253 : [START] : on_llm_new_token
+2025-08-29 12:54:48.125466 : [END]   : on_llm_new_token
+{
+  "token": " as",
+  "chunk": {
+    "text": " as",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:48.268323 : [START] : on_llm_new_token
+2025-08-29 12:54:48.269725 : [END]   : on_llm_new_token
+{
+  "token": "hes",
+  "chunk": {
+    "text": "hes",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:48.412338 : [START] : on_llm_new_token
+2025-08-29 12:54:48.413358 : [END]   : on_llm_new_token
+{
+  "token": ",",
+  "chunk": {
+    "text": ",",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:48.556143 : [START] : on_llm_new_token
+2025-08-29 12:54:48.557402 : [END]   : on_llm_new_token
+{
+  "token": " sign",
+  "chunk": {
+    "text": " sign",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:48.700563 : [START] : on_llm_new_token
+2025-08-29 12:54:48.701727 : [END]   : on_llm_new_token
+{
+  "token": "ifying",
+  "chunk": {
+    "text": "ifying",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:48.844390 : [START] : on_llm_new_token
+2025-08-29 12:54:48.845411 : [END]   : on_llm_new_token
+{
+  "token": " a",
+  "chunk": {
+    "text": " a",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:48.988439 : [START] : on_llm_new_token
+2025-08-29 12:54:48.989166 : [END]   : on_llm_new_token
+{
+  "token": " form",
+  "chunk": {
+    "text": " form",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.132087 : [START] : on_llm_new_token
+2025-08-29 12:54:49.133264 : [END]   : on_llm_new_token
+{
+  "token": " of",
+  "chunk": {
+    "text": " of",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.276353 : [START] : on_llm_new_token
+2025-08-29 12:54:49.277270 : [END]   : on_llm_new_token
+{
+  "token": " healing",
+  "chunk": {
+    "text": " healing",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.420061 : [START] : on_llm_new_token
+2025-08-29 12:54:49.421168 : [END]   : on_llm_new_token
+{
+  "token": " or",
+  "chunk": {
+    "text": " or",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.563715 : [START] : on_llm_new_token
+2025-08-29 12:54:49.564839 : [END]   : on_llm_new_token
+{
+  "token": " reb",
+  "chunk": {
+    "text": " reb",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.707616 : [START] : on_llm_new_token
+2025-08-29 12:54:49.708681 : [END]   : on_llm_new_token
+{
+  "token": "irth",
+  "chunk": {
+    "text": "irth",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.851388 : [START] : on_llm_new_token
+2025-08-29 12:54:49.852511 : [END]   : on_llm_new_token
+{
+  "token": ".",
+  "chunk": {
+    "text": ".",
+    "generation_info": null,
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.996705 : [START] : on_llm_new_token
+2025-08-29 12:54:49.997755 : [END]   : on_llm_new_token
+{
+  "token": "",
+  "chunk": {
+    "text": "",
+    "generation_info": {
+      "model": "mistral:7b",
+      "created_at": "2025-08-29T07:24:49.993872508Z",
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 5635012727,
+      "load_duration": 14176420,
+      "prompt_eval_count": 134,
+      "prompt_eval_duration": 105000000,
+      "eval_count": 37,
+      "eval_duration": 5514000000,
+      "response": "",
+      "thinking": null,
+      "context": [
+        3,
+        29473,
+        11417,
+        29515,
+        1763,
+        1228,
+        1164,
+        14660,
+        1122,
+        3764,
+        29501,
+        1277,
+        29495,
+        2899,
+        10564,
+        29491,
+        6706,
+        1040,
+        3064,
+        8537,
+        1070,
+        18681,
+        1054,
+        3526,
+        1066,
+        5140,
+        1040,
+        3764,
+        29491,
+        1815,
+        1136,
+        1717,
+        29510,
+        29475,
+        1641,
+        1040,
+        5140,
+        29493,
+        1544,
+        2083,
+        1137,
+        1136,
+        1717,
+        29510,
+        29475,
+        1641,
+        29491,
+        6706,
+        2480,
+        24516,
+        7996,
+        1072,
+        2608,
+        1040,
+        5140,
+        3846,
+        1632,
+        29491,
+        781,
+        25762,
+        29515,
+        9537,
+        19117,
+        1137,
+        1309,
+        22153,
+        29473,
+        781,
+        2851,
+        29515,
+        25445,
+        4482,
+        3936,
+        1072,
+        2018,
+        1080,
+        7131,
+        1245,
+        1040,
+        1158,
+        2821,
+        29491,
+        781,
+        29564,
+        29480,
+        3357,
+        1155,
+        1098,
+        27129,
+        6931,
+        19019,
+        1070,
+        16090,
+        2437,
+        29493,
+        1541,
+        1066,
+        5073,
+        1573,
+        1040,
+        10205,
+        29481,
+        1070,
+        23831,
+        1072,
+        781,
+        29521,
+        2892,
+        1037,
+        1601,
+        1155,
+        1098,
+        28342,
+        8495,
+        1137,
+        14979,
+        2712,
+        27087,
+        1770,
+        1254,
+        12468,
+        1056,
+        1546,
+        25445,
+        4482,
+        3936,
+        1072,
+        29473,
+        781,
+        3588,
+        17749,
+        29515,
+        4,
+        29473,
+        1183,
+        19117,
+        1137,
+        1309,
+        22153,
+        1228,
+        1040,
+        23996,
+        29491,
+        21689,
+        13842,
+        29493,
+        1146,
+        12468,
+        29481,
+        1546,
+        25445,
+        1072,
+        1117,
+        1080,
+        7131,
+        1245,
+        1040,
+        1158,
+        2821,
+        29493,
+        2260,
+        6987,
+        1032,
+        1989,
+        1070,
+        16700,
+        1210,
+        15315,
+        5401,
+        29491
+      ]
+    },
+    "type": "Generation"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:49.999603 : [START] : on_llm_end
+2025-08-29 12:54:50.000693 : [END]   : on_llm_end
+{
+  "response": {
+    "text": " The creatures that can heal are the Phoenix. Upon dying, it bursts into flames and is reborn from the ashes, signifying a form of healing or rebirth.",
+    "generation_info": {
+      "model": "mistral:7b",
+      "created_at": "2025-08-29T07:24:49.993872508Z",
+      "done": true,
+      "done_reason": "stop",
+      "total_duration": 5635012727,
+      "load_duration": 14176420,
+      "prompt_eval_count": 134,
+      "prompt_eval_duration": 105000000,
+      "eval_count": 37,
+      "eval_duration": 5514000000,
+      "response": "",
+      "thinking": null,
+      "context": [
+        3,
+        29473,
+        11417,
+        29515,
+        1763,
+        1228,
+        1164,
+        14660,
+        1122,
+        3764,
+        29501,
+        1277,
+        29495,
+        2899,
+        10564,
+        29491,
+        6706,
+        1040,
+        3064,
+        8537,
+        1070,
+        18681,
+        1054,
+        3526,
+        1066,
+        5140,
+        1040,
+        3764,
+        29491,
+        1815,
+        1136,
+        1717,
+        29510,
+        29475,
+        1641,
+        1040,
+        5140,
+        29493,
+        1544,
+        2083,
+        1137,
+        1136,
+        1717,
+        29510,
+        29475,
+        1641,
+        29491,
+        6706,
+        2480,
+        24516,
+        7996,
+        1072,
+        2608,
+        1040,
+        5140,
+        3846,
+        1632,
+        29491,
+        781,
+        25762,
+        29515,
+        9537,
+        19117,
+        1137,
+        1309,
+        22153,
+        29473,
+        781,
+        2851,
+        29515,
+        25445,
+        4482,
+        3936,
+        1072,
+        2018,
+        1080,
+        7131,
+        1245,
+        1040,
+        1158,
+        2821,
+        29491,
+        781,
+        29564,
+        29480,
+        3357,
+        1155,
+        1098,
+        27129,
+        6931,
+        19019,
+        1070,
+        16090,
+        2437,
+        29493,
+        1541,
+        1066,
+        5073,
+        1573,
+        1040,
+        10205,
+        29481,
+        1070,
+        23831,
+        1072,
+        781,
+        29521,
+        2892,
+        1037,
+        1601,
+        1155,
+        1098,
+        28342,
+        8495,
+        1137,
+        14979,
+        2712,
+        27087,
+        1770,
+        1254,
+        12468,
+        1056,
+        1546,
+        25445,
+        4482,
+        3936,
+        1072,
+        29473,
+        781,
+        3588,
+        17749,
+        29515,
+        4,
+        29473,
+        1183,
+        19117,
+        1137,
+        1309,
+        22153,
+        1228,
+        1040,
+        23996,
+        29491,
+        21689,
+        13842,
+        29493,
+        1146,
+        12468,
+        29481,
+        1546,
+        25445,
+        1072,
+        1117,
+        1080,
+        7131,
+        1245,
+        1040,
+        1158,
+        2821,
+        29493,
+        2260,
+        6987,
+        1032,
+        1989,
+        1070,
+        16700,
+        1210,
+        15315,
+        5401,
+        29491
+      ]
+    },
+    "llm_output": null,
+    "run": null,
+    "type": "LLMResult"
+  },
+  "run_id": "59291504-9837-4143-ba9e-403c2b85df2e",
+  "parent_run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "tags": [
+    "seq:step:3"
+  ]
+}
+2025-08-29 12:54:50.002855 : [START] : on_chain_end
+2025-08-29 12:54:50.003320 : [END]   : on_chain_end
+{
+  "outputs": " The creatures that can heal are the Phoenix. Upon dying, it bursts into flames and is reborn from the ashes, signifying a form of healing or rebirth.",
+  "run_id": "45cafd18-56ff-4086-ad11-e749708e76ff",
+  "parent_run_id": null,
+  "tags": []
+}
+2025-08-29 12:54:50.003783 : [END]   : Retriever.rag
+{
+  "query": "Find creatures that can heal",
+  "answer": " The creatures that can heal are the Phoenix. Upon dying, it bursts into flames and is reborn from the ashes, signifying a form of healing or rebirth.",
+  "retrieved": {}
+}
+2025-08-29 12:54:50.004390 : [START] : on_chain_end
+2025-08-29 12:54:50.004783 : [END]   : on_chain_end
+{
+  "outputs": {
+    "query": "Find creatures that can heal",
+    "answer": " The creatures that can heal are the Phoenix. Upon dying, it bursts into flames and is reborn from the ashes, signifying a form of healing or rebirth.",
+    "retrieved": {}
+  },
+  "run_id": "be615abc-247f-4f80-824a-a07e915eff47",
+  "parent_run_id": null,
+  "tags": []
+}

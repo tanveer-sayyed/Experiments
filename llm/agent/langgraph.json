@@ -1,7 +1,0 @@
-{
-    "dependencies": ["."],
-    "graphs": {
-        "my_agent": "./createAndCompileGraph.py:parallelNodesGraph"
-    },
-    "env": "./.env"
-}

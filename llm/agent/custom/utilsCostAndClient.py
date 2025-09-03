@@ -2,8 +2,6 @@ import asyncio
 from dataclasses import dataclass
 from json import JSONEncoder
 from langchain_core.runnables.graph import UUID
-# from langchain_openai import ChatOpenAI
-# from os import getenv
 from pandas import DataFrame
 from pprint import pformat
 from langchain_ollama import ChatOllama #langchain_core-0.3.74
@@ -13,7 +11,6 @@ from inspect import signature
 from langchain_core.tools import BaseTool
 
 MODEL = "gpt-3.5-turbo"
-# client = ChatOpenAI(api_key=getenv("OPENAI_API_KEY"))
 client = ChatOllama(
     model="mistral:7b",
     base_url="http://localhost:11435"

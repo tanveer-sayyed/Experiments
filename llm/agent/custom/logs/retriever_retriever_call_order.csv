@@ -1,0 +1,13 @@
+query,num_docs,docs
+Find creatures that can heal,3,"[DocumentMetrics(content='flames upo ... the ashes.',
+                 metadata={'creature_type': 'Bird',
+                           'magical_ability': 'Rebirth',
+                           'origin': 'Greek'}),
+ DocumentMetrics(content='Kraken - A ... Norway and',
+                 metadata={'creature_type': 'Cephalopod',
+                           'magical_ability': 'Whirlpool Creation',
+                           'origin': 'Norse'}),
+ DocumentMetrics(content='Phoenix -  ...  death and',
+                 metadata={'creature_type': 'Bird',
+                           'magical_ability': 'Rebirth',
+                           'origin': 'Greek'})]"

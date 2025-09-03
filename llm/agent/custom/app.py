@@ -4,6 +4,8 @@
     
     https://docs.langchain.com/langgraph-platform/deploy-standalone-server
     https://docs.langchain.com/langgraph-platform/application-structure
+    
+    https://docs.llamaindex.ai/en/stable/module_guides/observability/callbacks/root/
 """
 
 
