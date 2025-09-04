@@ -1,34 +1,40 @@
-Metrics(user=UserInfo(name='', thread_id='parallelNodesGraph_1', session_id=''),
+Metrics(user=UserInfo(name='', thread_id='parallelNodesGraph_3', session_id=''),
         node=NodeMetrics(call_order=['Node.add',
                                      'Node.divide',
                                      'Node.multiply',
                                      'Node.subtract',
-                                     'Node.collect'],
+                                     'Node.collect',
+                                     'Node.welcome'],
                          call_order_duration=[Duration(start_time='2025-09-03 '
-                                                                  '17:43:04.293400',
+                                                                  '17:43:04.296376',
                                                        end_time='2025-09-03 '
-                                                                '17:43:04.293400',
-                                                       duration='0:00:00.000006'),
+                                                                '17:43:04.296376',
+                                                       duration='0:00:00.000009'),
                                               Duration(start_time='2025-09-03 '
-                                                                  '17:43:04.293496',
+                                                                  '17:43:04.296646',
                                                        end_time='2025-09-03 '
-                                                                '17:43:04.293496',
+                                                                '17:43:04.296646',
+                                                       duration='0:00:00.000008'),
+                                              Duration(start_time='2025-09-03 '
+                                                                  '17:43:04.296803',
+                                                       end_time='2025-09-03 '
+                                                                '17:43:04.296803',
+                                                       duration='0:00:00.000007'),
+                                              Duration(start_time='2025-09-03 '
+                                                                  '17:43:04.296876',
+                                                       end_time='2025-09-03 '
+                                                                '17:43:04.296876',
                                                        duration='0:00:00.000005'),
                                               Duration(start_time='2025-09-03 '
-                                                                  '17:43:04.293586',
+                                                                  '17:43:04.309309',
                                                        end_time='2025-09-03 '
-                                                                '17:43:04.293586',
-                                                       duration='0:00:00.000005'),
+                                                                '17:43:04.309309',
+                                                       duration='0:00:00.000020'),
                                               Duration(start_time='2025-09-03 '
-                                                                  '17:43:04.293722',
+                                                                  '17:43:04.346220',
                                                        end_time='2025-09-03 '
-                                                                '17:43:04.293722',
-                                                       duration='0:00:00.000006'),
-                                              Duration(start_time='2025-09-03 '
-                                                                  '17:43:04.304340',
-                                                       end_time='2025-09-03 '
-                                                                '17:43:04.304340',
-                                                       duration='0:00:00.000006')],
+                                                                '17:43:04.346220',
+                                                       duration='0:00:00.000012')],
                          error=Error(where='', description='')),
         llm=LlmMetrics(model=[],
                        prompt=[],

@@ -5,7 +5,7 @@ from pprint import pprint
 
 from asyncLogsAndMetrics import monitor
 from callbackHandler import CustomAsyncCallbacks
-from nodesToolsEdgesGraph import (
+from nodesToolsRetrieverAndEdges import (
     CustomStateGraphBuilder,
     Edge,
     Node,

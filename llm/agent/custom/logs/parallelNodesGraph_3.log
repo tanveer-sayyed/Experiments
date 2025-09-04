@@ -1,0 +1,143 @@
+READY
+2025-09-03 17:43:04.279620 : [START] : on_chain_start
+2025-09-03 17:43:04.281279 : [END]   : on_chain_start
+{
+  "serialized": null,
+  "inputs": {
+    "a": -1,
+    "b": -99,
+    "name": "Turing",
+    "welcome_msg": "",
+    "add_result": 0.0,
+    "div_result": 0.0,
+    "mul_result": 0.0,
+    "sub_result": 0.0,
+    "final_result": {}
+  },
+  "run_id": "1b2e93e0-aad6-43ed-bb88-a694756ecfa2",
+  "parent_run_id": null,
+  "tags": [],
+  "metadata": {}
+}
+2025-09-03 17:43:04.284418 : [START] : Node.add
+2025-09-03 17:43:04.289269 : [START] : Node.divide
+2025-09-03 17:43:04.291654 : [START] : Node.multiply
+2025-09-03 17:43:04.295122 : [START] : Node.subtract
+2025-09-03 17:43:04.298615 : [END]   : Node.add
+{
+  "a": -1,
+  "b": -99,
+  "name": "Turing",
+  "welcome_msg": "",
+  "add_result": -100,
+  "sub_result": 0.0,
+  "mul_result": 0.0,
+  "div_result": 0.0,
+  "final_result": {},
+  "messages": []
+}
+2025-09-03 17:43:04.300820 : [END]   : Node.divide
+{
+  "a": -1,
+  "b": -99,
+  "name": "Turing",
+  "welcome_msg": "",
+  "add_result": 0.0,
+  "sub_result": 0.0,
+  "mul_result": 0.0,
+  "div_result": 0.010101010101010102,
+  "final_result": {},
+  "messages": []
+}
+2025-09-03 17:43:04.302794 : [END]   : Node.multiply
+{
+  "a": -1,
+  "b": -99,
+  "name": "Turing",
+  "welcome_msg": "",
+  "add_result": 0.0,
+  "sub_result": 0.0,
+  "mul_result": 99,
+  "div_result": 0.0,
+  "final_result": {},
+  "messages": []
+}
+2025-09-03 17:43:04.304144 : [END]   : Node.subtract
+{
+  "a": -1,
+  "b": -99,
+  "name": "Turing",
+  "welcome_msg": "",
+  "add_result": 0.0,
+  "sub_result": 98,
+  "mul_result": 0.0,
+  "div_result": 0.0,
+  "final_result": {},
+  "messages": []
+}
+2025-09-03 17:43:04.307998 : [START] : Node.collect
+2025-09-03 17:43:04.312520 : [END]   : Node.collect
+{
+  "a": -1,
+  "b": -99,
+  "name": "Turing",
+  "welcome_msg": "",
+  "add_result": -100,
+  "sub_result": 98,
+  "mul_result": 99,
+  "div_result": 0.010101010101010102,
+  "final_result": {
+    "addition": -100,
+    "subtraction": 98,
+    "multiplication": 99,
+    "division": 0.010101010101010102
+  },
+  "messages": []
+}
+2025-09-03 17:43:04.345656 : [START] : Node.welcome
+2025-09-03 17:43:04.347619 : [END]   : Node.welcome
+{
+  "a": -1,
+  "b": -99,
+  "name": "Turing",
+  "welcome_msg": [
+    "HelloO! TURING"
+  ],
+  "add_result": -100,
+  "sub_result": 98,
+  "mul_result": 99,
+  "div_result": 0.010101010101010102,
+  "final_result": {
+    "addition": -100,
+    "subtraction": 98,
+    "multiplication": 99,
+    "division": 0.010101010101010102
+  },
+  "messages": []
+}
+2025-09-03 17:43:04.350365 : [START] : on_chain_end
+2025-09-03 17:43:04.361513 : [END]   : on_chain_end
+{
+  "outputs": {
+    "a": -1,
+    "b": -99,
+    "name": "Turing",
+    "welcome_msg": [
+      "HelloO! TURING"
+    ],
+    "add_result": -100,
+    "sub_result": 98,
+    "mul_result": 99,
+    "div_result": 0.010101010101010102,
+    "final_result": {
+      "addition": -100,
+      "subtraction": 98,
+      "multiplication": 99,
+      "division": 0.010101010101010102
+    },
+    "messages": []
+  },
+  "run_id": "1b2e93e0-aad6-43ed-bb88-a694756ecfa2",
+  "parent_run_id": null,
+  "tags": []
+}

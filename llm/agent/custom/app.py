@@ -30,8 +30,15 @@ async def _main1():
             thread_id="parallelNodesGraph_2",
             context=context
         ))
+    # task3 with user's runtime context
+    context = dict(a=-1, b=-99, name="Turing")
+    task3 = create_task(
+        parallelNodesGraph(
+            thread_id="parallelNodesGraph_3",
+            context=context
+        ))
     # concurrent execution
-    results = await gather(task1, task2)
+    results = await gather(task1, task2, task3)
     for result in results: pprint(result)
 
 async def _main2():
@@ -65,12 +72,12 @@ async def _main3():
 
 async def main():
     try:
-        await _main1()
+        # await _main1()
         # await _main2()
-        # await _main3()
+        await _main3()
     except Exception as e:
         raise e                       # for debug
         # print("some error occured") # for prod
 
 # await main()
-# run(main())
+run(main())
