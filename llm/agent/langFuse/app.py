@@ -3,8 +3,8 @@ from langfuse import Langfuse, get_client
 from langfuse.langchain import CallbackHandler
 
 langfuse = Langfuse(
-  secret_key="sk-lf-3aefe75a-b11d-44e9-b6b0-8c33ab4b16cd",
-  public_key="pk-lf-fd9986aa-7154-4de8-8497-ff9de62fa358",
+  secret_key="secret_key",
+  public_key="public_key",
   host="http://localhost:3000"
 ) # OR langfuse = get_client()
 langfuse_handler = CallbackHandler()
